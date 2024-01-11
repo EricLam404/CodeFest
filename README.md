@@ -34,3 +34,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+# Brain Buddy
+
+## Google/Hunter CodeFest Project - Fatima Asif, Jianhua Deng, Eric Lam, Daphne Luzong
+
+Brain Buddy is an innovative AI-powered education platform that tailors personalized study plans, adaptive quizzes, and collaborative learning experiences, providing students with real-time progress tracking and motivational support for an engaging and effective learning journey
