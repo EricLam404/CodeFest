@@ -40,3 +40,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Google/Hunter CodeFest Project - Fatima Asif, Jianhua Deng, Eric Lam, Daphne Luzong
 
 Brain Buddy is an innovative AI-powered education platform that tailors personalized study plans, adaptive quizzes, and collaborative learning experiences, providing students with real-time progress tracking and motivational support for an engaging and effective learning journey
+
+## Live Link
+https://brain-buddy.vercel.app/
