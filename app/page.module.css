@@ -1,0 +1,11 @@
+.link {
+    text-decoration: none;
+    transition: color 0.3s ease;
+    color: black;
+    padding-top: 4px;
+    font-size: large;
+}
+
+.link:hover {
+    color: #2980b9;
+}

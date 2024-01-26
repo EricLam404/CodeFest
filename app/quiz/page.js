@@ -1,5 +1,6 @@
 'use client'
 
+import styles from './page.module.css'
 import React, { useEffect, useState } from "react";
 
 const Quiz = () => {
@@ -27,7 +28,6 @@ const Quiz = () => {
                     })
                 })
                 const data = await response.json()
-                console.log(data);
 
                 //Quiz template in json so we dont waste the api for testing
 
@@ -98,51 +98,52 @@ const Quiz = () => {
       };
 
     return (
-        <div>
-        {loading ? (
-            // Loading animation while API call is in progress
-            <div>Loading...</div>
-          ) : !quizGenerated ? (
-          <div>
-            <div>Quiz</div>
-            <form onSubmit={handleQuiz}>
-              <div>
-                <label htmlFor="notes">Enter notes below</label>
-                <textarea name="notes" id="notes" onChange={handleChange}></textarea>
-                <div>words: {wordCount}/15,000</div>
-              </div>
-              <button type="submit">Generate Quiz</button>
-            </form>
-          </div>
-        ) : (
-          <div>
-            <div>Quiz: {quiz.title}</div>
-            <form onSubmit={handleSubmit}>
-                {quiz.questions.map((question, index) => (
-                    <div key={index}>
-                    <div>{question.question}</div>
-                    <ol>
-                        {question.choices.map((choice, choiceIndex) => (
-                        <li key={choiceIndex}>
-                            <label>
-                            <input
-                                type="radio"
-                                name={`question_${index}`}
-                                value={choice}
-                                onChange={(e) => handleAnswer(e, index)}
-                            />
-                            {choice}
-                            </label>
-                        </li>
-                        ))}
-                    </ol>
-                    </div>
-                ))}
-                <button type="submit">Submit Quiz</button>
-            </form>
-            {score && <div>{score} %</div>}
-          </div>
-        )}
+        <div className={styles.body}>
+            <div className={styles.container}>
+            {loading ? (
+                <div className={styles.loading}>Loading...</div>
+            ) : !quizGenerated ? (
+            <div>
+                <div className={styles.quizTitle}>Quiz</div>
+                <form className={styles.quizForm} onSubmit={handleQuiz}>
+                <div className={styles.upload}>
+                    <label className={styles.notes} htmlFor="notes">Enter notes below</label>
+                    <textarea name="notes" id="notes" onChange={handleChange}></textarea>
+                    <div className={styles.wordCount} >words: {wordCount}/15,000</div>
+                </div>
+                <button className={styles.btn} type="submit">Generate Quiz</button>
+                </form>
+            </div>
+            ) : (
+            <div className={styles.quiz}>
+                <div className={styles.quizTitle}>Quiz: {quiz.title}</div>
+                <form className={styles.form} onSubmit={handleSubmit}>
+                    {quiz.questions.map((question, index) => (
+                        <div key={index}>
+                        <div>{question.question}</div>
+                        <ol>
+                            {question.choices.map((choice, choiceIndex) => (
+                            <li key={choiceIndex}>
+                                <label>
+                                <input
+                                    type="radio"
+                                    name={`question_${index}`}
+                                    value={choice}
+                                    onChange={(e) => handleAnswer(e, index)}
+                                />
+                                {choice}
+                                </label>
+                            </li>
+                            ))}
+                        </ol>
+                        </div>
+                    ))}
+                    <button className={styles.btn} type="submit">Submit Quiz</button>
+                </form>
+                {score && <div className={styles.score}>{score} %</div>}
+                </div>
+                )}
+            </div>
         </div>
     )
 }

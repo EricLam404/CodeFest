@@ -8,7 +8,7 @@ export default function Home() {
         CodeFest Project
       </div>
       <Link href="/quiz">
-          <button>Go to Quiz</button>
+          <div className={styles.link}>Go to Quiz</div>
       </Link>
     </main>
   )
