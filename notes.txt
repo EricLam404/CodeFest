@@ -69,23 +69,3 @@ accomplishment of mathematics. After all, what do these symbols “1”, “2”
 actually mean? These numbers can be formally defined in terms of sets. Even more
 involved is the formal definition of the reals, usually covered in a first mathematical
 analysis course.
-Here we cannot afford to cover everything in complete detail, which would have to
-include, among other things, basic algebra and trigonometry. Furthermore, the vast
-majority of mathematical works, while considered to be “formal”, gloss over details
-all the time. For example, you’ll be hard-pressed to find a mathematical paper that
-goes through the trouble of justifying the equation a
-2 − b
-2 = (a − b)(a + b). In effect,
-every mathematical paper or lecture assumes a shared knowledge base with its readers
-or listeners. It is extremely important for an author of mathematics, such as yourself
-during this course, to estimate this shared knowledge base correctly!
-In CS103X we will assume most of high-school mathematics, including perhaps
-some AP math like single-variable calculus, as our shared knowledge base. Thus
-notions and techniques from this base will generally not be justified in lecture, and
-can be used freely in your homework and exams. Furthermore, once we develop certain
-2
-notation or prove some theorem in class, you can use these freely in your homework
-and exams, provided that you clearly cite the appropriate theorems. In writing and
-speaking mathematics, a delicate balance is maintained between being formal and
-not getting bogged down in minutia.1 This balance usually becomes second-nature
-with experience. You should all get the hang of it by the end of the quarter.

@@ -107,7 +107,7 @@ const Quiz = () => {
                 <div className={styles.quizTitle}>Quiz</div>
                 <form className={styles.quizForm} onSubmit={handleQuiz}>
                 <div className={styles.upload}>
-                    <label className={styles.notes} htmlFor="notes">Enter notes below</label>
+                    <label className={styles.notes} htmlFor="notes">Enter notes below(Between 100-15,000 words)</label>
                     <textarea name="notes" id="notes" onChange={handleChange}></textarea>
                     <div className={styles.wordCount} >words: {wordCount}/15,000</div>
                 </div>
