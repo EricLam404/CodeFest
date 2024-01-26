@@ -43,3 +43,6 @@ Brain Buddy is an innovative AI-powered education platform that tailors personal
 
 ## Live Link
 https://brain-buddy.vercel.app/
+
+## Demo
+Paste the notes from notes.txt into the textarea in order to generate a quiz

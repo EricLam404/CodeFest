@@ -1,0 +1,91 @@
+Sets and Notation
+1.1 Defining sets
+Definition. A set is an unordered collection of distinct objects. The objects in a
+set are called the elements, or members, of the set. A set is said to contain its elements.
+A set can be defined by simply listing its members inside curly braces. For example,
+the set {2, 4, 17, 23} is the same as the set {17, 4, 23, 2}. To denote membership we
+use the ∈ symbol, as in 4 ∈ {2, 4, 17, 23}. On the other hand, non-membership is
+denoted as in 5 6∈ {2, 4, 17, 23}.
+If we want to specify a long sequence that follows a pattern, we can use the ellipsis
+notation, meaning “fill in, using the same pattern”. The ellipsis is often used after two
+or more members of the sequence, and before the last one, as follows: {1, 2, . . . , n}.
+The pattern denoted by the ellipsis should be apparent at first sight! For instance,
+{1, . . . , n} is generally regarded as underspecified (that is, too ambiguous). Of course,
+even {1, 2, . . . , n} is still ambiguous—did we mean all integers between 1 and n, all
+powers of two up to n, or perhaps the set {1, 2, 25, n}?—but is generally sufficient,
+unless you really do mean all powers of two up to n, in which case {2
+0
+, 2
+1
+, 2
+2
+, . . . , 2
+k}
+for an appropriate k is a better choice. The ellipsis can also be used to define an
+infinite set, as in the following.
+Definition. The set of natural numbers or nonnegative integers, denoted by N, is
+defined as {0, 1, 2, . . .}.
+To avoid ambiguities it is often useful to use the set builder notation, which lists
+on the right side of the colon the property that any set element, specified on the left
+side of the colon, has to satisfy. Let’s define the positive integers using the set builder
+notation:
+N
++ = {x : x ∈ N and x > 0}.
+We can also write
+N
++ = {x ∈ N : x > 0}.
+1
+This is a matter of taste. In general, use the form that will be easiest for the reader
+of your work to understand. Often it is the least “cluttered” one.
+Ok, now onto the integers:
+Z = {x : x ∈ N or −x ∈ N}.
+Hmm, perhaps in this case it is actually better to write
+Z = {. . . , −2, −1, 0, 1, 2, . . .}.
+Remember, when you write mathematics, you should keep your readers’ perspective
+in mind. For now, we—the staff of this course—are your readers. In the future it
+might be your colleagues, supervisors, or the readers of your published work. In
+addition to being reasonably formal and unambiguous, your mathematical writing
+should be as clear and understandable to your intended readership as possible.
+Here are the rational numbers:
+Q =
+na
+b
+: a ∈ Z, b ∈ Z, b 6= 0o
+.
+Instead of a ∈ Z, b ∈ Z, you can write a, b ∈ Z, which is more concise and generally
+more readable. Don’t go overboard, though, with writing something like a, b 6= 0 ∈ Z,
+this is way too confusing and does not say what you want it to.
+Finally, the set of real numbers is denoted by R. All the reals that are not rational
+are called
+√
+irrational. These include the familiar π = 3.1415926..., e = 2.7182818...,
+2, and infinitely many others. (How do we know that these numbers are irrational,
+do you ask? Actually, we will see a proof of this for √
+2 shortly. The proofs for π and
+e require mathematical analysis and are outside our scope.)
+On being formal. Were the above definitions formal enough? The answer is: it
+depends. For example, defining the natural numbers is an important and non-trivial
+accomplishment of mathematics. After all, what do these symbols “1”, “2”, “3”,
+actually mean? These numbers can be formally defined in terms of sets. Even more
+involved is the formal definition of the reals, usually covered in a first mathematical
+analysis course.
+Here we cannot afford to cover everything in complete detail, which would have to
+include, among other things, basic algebra and trigonometry. Furthermore, the vast
+majority of mathematical works, while considered to be “formal”, gloss over details
+all the time. For example, you’ll be hard-pressed to find a mathematical paper that
+goes through the trouble of justifying the equation a
+2 − b
+2 = (a − b)(a + b). In effect,
+every mathematical paper or lecture assumes a shared knowledge base with its readers
+or listeners. It is extremely important for an author of mathematics, such as yourself
+during this course, to estimate this shared knowledge base correctly!
+In CS103X we will assume most of high-school mathematics, including perhaps
+some AP math like single-variable calculus, as our shared knowledge base. Thus
+notions and techniques from this base will generally not be justified in lecture, and
+can be used freely in your homework and exams. Furthermore, once we develop certain
+2
+notation or prove some theorem in class, you can use these freely in your homework
+and exams, provided that you clearly cite the appropriate theorems. In writing and
+speaking mathematics, a delicate balance is maintained between being formal and
+not getting bogged down in minutia.1 This balance usually becomes second-nature
+with experience. You should all get the hang of it by the end of the quarter.
