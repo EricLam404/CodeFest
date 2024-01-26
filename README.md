@@ -46,3 +46,5 @@ https://brain-buddy.vercel.app/
 
 ## Demo
 Paste the notes from notes.txt into the textarea in order to generate a quiz
+
+create a .env.local file and the key is in the google doc
