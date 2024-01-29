@@ -10,6 +10,7 @@ const Quiz = () => {
     const [quiz, setQuiz] = useState({});
     const [userAnswers, setUserAnswers] = useState({});
     const [score, setScore] = useState(null);
+    const [numQuestions, setNumQuestions] = useState(1);
 
     useEffect(() => {
         if(!(Object.keys(quiz).length === 0)) setQuizGenerated(true);
@@ -24,7 +25,8 @@ const Quiz = () => {
                 const response = await fetch("/api/ai", {
                     method: "POST",
                     body: JSON.stringify({
-                        notes: notes
+                        notes: notes,
+                        questions: numQuestions
                     })
                 })
                 const data = await response.json()
@@ -107,9 +109,20 @@ const Quiz = () => {
                 <div className={styles.quizTitle}>Quiz</div>
                 <form className={styles.quizForm} onSubmit={handleQuiz}>
                 <div className={styles.upload}>
-                    <label className={styles.notes} htmlFor="notes">Enter notes below(Between 100-15,000 words)</label>
+                    <label className={styles.notes} htmlFor="notes">Enter notes below(100-15,000 words)</label>
                     <textarea name="notes" id="notes" onChange={handleChange}></textarea>
                     <div className={styles.wordCount} >words: {wordCount}/15,000</div>
+                </div>
+                <div>
+                    <label htmlFor="numQuestions">Number of Questions:</label>
+                    <input
+                    type="number"
+                    id="numQuestions"
+                    className='numQuestions'
+                    value={numQuestions}
+                    onChange={(e) => { setNumQuestions(e.target.value)}}
+                    min={1}
+                    />
                 </div>
                 <button className={styles.btn} type="submit">Generate Quiz</button>
                 </form>

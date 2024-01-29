@@ -3,12 +3,12 @@ import OpenAI from "openai";
 
 export async function POST(req) {
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY})
-    const { notes } = await req.json();
+    const { notes, questions } = await req.json();
     const completion = await openai.chat.completions.create({
         messages: [
             {
             role: "system",
-            content: "You are a helpful assistant designed to turn notes into a multiple choice quiz with 4 choices(do not put the letter choices A-D) and output JSON. Give a title and three fields for each question, question, choices and answer",
+            content: `You're a quiz assistant. Create a multiple-choice quiz with ${questions} questions in JSON format with a title and questions. Each question should have a prompt called question, four choices in an array(do not put the letter choices A-D)., and the correct answer `,
             },
             { role: "user", content: notes },
         ],
