@@ -22,7 +22,7 @@ const Quiz = () => {
             setLoading(true);
             if(wordCount > 100 && wordCount <= 15000){
                 const notes = e.target.notes.value.trim()
-                const response = await fetch("/api/ai", {
+                const response = await fetch("/api/ai/quiz", {
                     method: "POST",
                     body: JSON.stringify({
                         notes: notes,
