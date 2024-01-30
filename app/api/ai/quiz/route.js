@@ -8,7 +8,7 @@ export async function POST(req) {
         messages: [
             {
             role: "system",
-            content: `You're a quiz assistant. Create a multiple-choice quiz with ${questions} questions in JSON format with a title and questions. Each question should have a prompt called question, four choices in an array(do not put the letter choices A-D)., and the correct answer `,
+            content: `You're a quiz assistant. Create a multiple-choice quiz with ${questions} questions in JSON format with a title and questions. Each question should have a prompt called question, four choices in an array(do not put the letter choices A-D), and the correct answer `,
             },
             { role: "user", content: notes },
         ],

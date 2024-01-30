@@ -47,3 +47,40 @@
 .question {
     margin-bottom: 20px;
 }
+
+.swap {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 250px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+    user-select: none;
+    padding: 4px;
+    margin: 8px 0px;
+}
+
+.swap:hover {
+    background-color: #e4e3e3;
+}
+
+.swap input {
+    display: none;
+}
+
+.swap_on, .swap_off {
+    flex: 1;
+    padding: 4px;
+    text-align: center;
+    display: none;
+}
+
+
+.swap input:checked ~ .swap_off {
+    display: block;
+}
+
+.swap input:not(:checked) ~ .swap_on {
+    display: block;
+}
