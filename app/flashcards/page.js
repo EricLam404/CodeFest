@@ -18,18 +18,18 @@ const handleClick = async (e) => {
         }),
     });
     const result = await response.json();
-    setChoices(result.completion.choices);
+    setChoices(result.choices);
+    console.log(result.completion.choices[0].message.content)//It prints the content fine in this way
+    console.log(choices);//It prints "[]" which is the default value
 }
 
 useEffect(() => {//trying to print out choices when its updated, but always returns an undefined object
-    if(choices.length != 0) {
-        console.log(choices);
-    }
+    console.log(choices);
 }, [choices]);
 
 return(
     <div className={styles.container}>
-        <button className={styles.button} onClick={handleClick}>Testing API</button>
+        <button className='style.button' onClick={handleClick}>Testing API</button>
         {/* Gave run time error of "choices" being undefined
         {choices.map(choice => {
             console.log(choice);
