@@ -14,6 +14,13 @@ export default function Home() {
               <div className={styles.link}>Go to Quiz</div>
           </Link>
         </div>
+
+        <div className={styles.container}>
+          <Link className={styles.linkComponent} href="/flashcards">
+              <div className={styles.link}>Flashcards</div>
+          </Link>
+        </div>
+
       </div>
       
     </main>
