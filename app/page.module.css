@@ -1,8 +1,39 @@
+.main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.startPageContainer{
+    border: 1px solid black;
+    width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(235, 235, 235);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container{
+    background-color: white;
+    width: 150px;
+    border: 1px solid;
+    border-radius: 10px;
+    text-align: center;
+    
+}
+
+.linkComponent{
+    text-decoration: none;
+}
+
 .link {
     text-decoration: none;
     transition: color 0.3s ease;
     color: black;
-    padding-top: 4px;
     font-size: large;
 }
 
