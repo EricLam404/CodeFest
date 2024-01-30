@@ -2,14 +2,13 @@
 
 import styles from './page.module.css'
 import React, { useEffect, useState } from "react";
+import Quiz from "../../components/Quiz"
 
-const Quiz = () => {
+const Page = () => {
     const [quizGenerated, setQuizGenerated] = useState(false);
     const [loading, setLoading] = useState(false);
     const [wordCount, setWordCount] = useState(0);
     const [quiz, setQuiz] = useState({});
-    const [userAnswers, setUserAnswers] = useState({});
-    const [score, setScore] = useState(null);
     const [numQuestions, setNumQuestions] = useState(1);
 
     useEffect(() => {
@@ -75,30 +74,6 @@ const Quiz = () => {
         setWordCount(e.target.value ? e.target.value.trim().split(" ").length : 0)
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const totalQuestions = quiz.questions.length;
-        let correctAnswers = 0;
-
-        quiz.questions.forEach((question, index) => {
-        const userAnswer = userAnswers[index];
-        if (userAnswer === question.answer) {
-            correctAnswers++;
-        }
-        });
-
-        const calculatedScore = (correctAnswers / totalQuestions) * 100;
-        setScore(calculatedScore.toFixed(2));
-      };
-    
-    const handleAnswer = async (e, questionIndex) => {
-        setUserAnswers({
-          ...userAnswers,
-          [questionIndex]: e.target.value,
-        });
-      };
-
     return (
         <div className={styles.body}>
             <div className={styles.container}>
@@ -128,40 +103,14 @@ const Quiz = () => {
                 </form>
             </div>
             ) : (
-            <div className={styles.quiz}>
-                <div className={styles.quizTitle}>Quiz: {quiz.title}</div>
-                <form className={styles.form} onSubmit={handleSubmit}>
-                    {quiz.questions.map((question, index) => (
-                        <div key={index}>
-                        <div>{question.question}</div>
-                        <ol>
-                            {question.choices.map((choice, choiceIndex) => (
-                            <li key={choiceIndex}>
-                                <label>
-                                <input
-                                    type="radio"
-                                    name={`question_${index}`}
-                                    value={choice}
-                                    onChange={(e) => handleAnswer(e, index)}
-                                />
-                                {choice}
-                                </label>
-                            </li>
-                            ))}
-                        </ol>
-                        </div>
-                    ))}
-                    <button className={styles.btn} type="submit">Submit Quiz</button>
-                </form>
-                {score && <div className={styles.score}>{score} %</div>}
-                </div>
+                <Quiz quiz={quiz}/>
                 )}
             </div>
         </div>
     )
 }
 
-export default Quiz
+export default Page
 
 
 
