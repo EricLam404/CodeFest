@@ -2,8 +2,8 @@
 
 import styles from './page.module.css'
 import React, { useEffect, useState } from "react";
-import Quiz from "../../components/Quiz"
-import { TestQuizData } from '@/components/TestData/QuizData';
+import Quiz from "../(components)/Quiz"
+import { TestQuizData } from '@/app/(components)/TestData/QuizData';
 
 const Page = () => {
     const [quizGenerated, setQuizGenerated] = useState(false);
