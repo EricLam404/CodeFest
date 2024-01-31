@@ -1,5 +1,5 @@
 
-.container .cardContainer .formContainer{
+.container, .cardContainer, .formContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
