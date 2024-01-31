@@ -5,39 +5,60 @@ import {useState, useEffect} from "react";
 
 const Flashcards = () => {
 
-const [choices, setChoices] = useState([]);
+const [cardsGenerated, setCardGenerated] = useState(false);
+const [cardsData, setCards] = useState({});
+const [notes, setNotes] = useState("")
+const [numCard, setNumCard] = useState(5);
+
+const handleInput = (e) => {
+    setNotes(e.target.value)
+}
 
 const handleClick = async (e) => {
+    e.preventDefault();
+
     const response = await fetch("/api/ai/flashcard", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
         body: JSON.stringify({
-            something: true,
+            notes: notes,
+            numCards: numCard
         }),
     });
     const result = await response.json();
-    setChoices(result.choices);
-    console.log(result.completion.choices[0].message.content)//It prints the content fine in this way
-    console.log(choices);//It prints "[]" which is the default value
+    const cards = JSON.parse(result.completion.choices[0].message.content)
+    console.log(cards)//It prints the content fine in this way
+    setCards(cards);
+    console.log(cardsData);//It prints "[]" which is the default value
 }
 
-useEffect(() => {//trying to print out choices when its updated, but always returns an undefined object
-    console.log(choices);
-}, [choices]);
+useEffect(() =>{
+    if(!(Object.keys(cardsData).length === 0)) setCardGenerated(true);
+    }, [cardsData])
 
 return(
     <div className={styles.container}>
-        <button className='style.button' onClick={handleClick}>Testing API</button>
-        {/* Gave run time error of "choices" being undefined
-        {choices.map(choice => {
-            console.log(choice);
-            return(
-                <p key={choice.index}>{choice.message.content}</p>
+        {!cardsGenerated ? (
+            
+            <div className={styles.formContainer}>
+                <h2>Turning your notes into bunch of flashcards</h2>
+                <form className={styles.form} onSubmit={handleClick}>
+                <label>Enter Notes:</label>
+                <textarea className={styles.textarea} value={notes} onChange={handleInput}/>
+                <button className={styles.button} type="submit">Submit Notes</button>
+                </form>
+            </div>
+        ) : (
+                <div className={styles.cardContainer}>
+                    {cardsData.flashcards.map((cards, index) => (
+                        <div key={index} className={styles.cards}>
+                            <h2>{cards.title}</h2>
+                            <p>{cards.content}</p>
+                        </div>
+                    ))}
+                </div>
             )
-        })}
-        */}
+        }
+
 
     </div>
 
