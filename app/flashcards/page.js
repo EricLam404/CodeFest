@@ -5,7 +5,8 @@ import {useState, useEffect} from "react";
 
 const Flashcards = () => {
 
-const [choices, setChoices] = useState([]);
+const [cardsGenerated, setCardGenerated] = useState(false);
+const [cardsData, setCards] = useState({});
 const [notes, setNotes] = useState("")
 const [numCard, setNumCard] = useState(5);
 
@@ -18,9 +19,6 @@ const handleClick = async (e) => {
 
     const response = await fetch("/api/ai/flashcard", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
         body: JSON.stringify({
             notes: notes,
             numCards: numCard
@@ -28,27 +26,34 @@ const handleClick = async (e) => {
     });
     const result = await response.json();
     const cards = JSON.parse(result.completion.choices[0].message.content)
-    //setChoices(cards);
     console.log(cards)//It prints the content fine in this way
-    //console.log(choices);//It prints "[]" which is the default value
+    setCards(cards);
+    console.log(cardsData);//It prints "[]" which is the default value
 }
 
-
+useEffect(() =>{
+    if(!(Object.keys(cardsData).length === 0)) setCardGenerated(true);
+    }, [cardsData])
 
 return(
     <div className={styles.container}>
-        <form onSubmit={handleClick}>
-            <lable>Enter Notes</lable>
+        {!cardsGenerated ? (
+            <form onSubmit={handleClick}>
+            <label>Enter Notes:</label>
             <input type="text" value={notes} onChange={handleInput}></input>
-            <button className='style.button' type="submit">Testing API</button>
-        </form>
-
-        {choices.map(choice => {
-            console.log(choice);
-            return(
-                <p key={choice.index}>{choice.message.content}</p>
+            <button className='style.button' type="submit">Submit Notes</button>
+            </form>
+        ) : (
+                <div className={styles.cardContainer}>
+                    {cardsData.flashcards.map((cards, index) => (
+                        <div key={index} className={styles.cards}>
+                            <h2>{cards.title}</h2>
+                            <p>{cards.content}</p>
+                        </div>
+                    ))}
+                </div>
             )
-        })}
+        }
 
 
     </div>
