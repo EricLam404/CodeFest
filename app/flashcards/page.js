@@ -38,11 +38,15 @@ useEffect(() =>{
 return(
     <div className={styles.container}>
         {!cardsGenerated ? (
-            <form onSubmit={handleClick}>
-            <label>Enter Notes:</label>
-            <input type="text" value={notes} onChange={handleInput}></input>
-            <button className='style.button' type="submit">Submit Notes</button>
-            </form>
+            
+            <div className={styles.formContainer}>
+                <h2>Turning your notes into bunch of flashcards</h2>
+                <form className={styles.form} onSubmit={handleClick}>
+                <label>Enter Notes:</label>
+                <textarea className={styles.textarea} value={notes} onChange={handleInput}/>
+                <button className={styles.button} type="submit">Submit Notes</button>
+                </form>
+            </div>
         ) : (
                 <div className={styles.cardContainer}>
                     {cardsData.flashcards.map((cards, index) => (
