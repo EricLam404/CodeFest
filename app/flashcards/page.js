@@ -6,38 +6,50 @@ import {useState, useEffect} from "react";
 const Flashcards = () => {
 
 const [choices, setChoices] = useState([]);
+const [notes, setNotes] = useState("")
+const [numCard, setNumCard] = useState(5);
+
+const handleInput = (e) => {
+    setNotes(e.target.value)
+}
 
 const handleClick = async (e) => {
+    e.preventDefault();
+
     const response = await fetch("/api/ai/flashcard", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            something: true,
+            notes: notes,
+            numCards: numCard
         }),
     });
     const result = await response.json();
-    setChoices(result.choices);
-    console.log(result.completion.choices[0].message.content)//It prints the content fine in this way
-    console.log(choices);//It prints "[]" which is the default value
+    const cards = JSON.parse(result.completion.choices[0].message.content)
+    //setChoices(cards);
+    console.log(cards)//It prints the content fine in this way
+    //console.log(choices);//It prints "[]" which is the default value
 }
 
-useEffect(() => {//trying to print out choices when its updated, but always returns an undefined object
-    console.log(choices);
-}, [choices]);
+
 
 return(
     <div className={styles.container}>
-        <button className='style.button' onClick={handleClick}>Testing API</button>
-        {/* Gave run time error of "choices" being undefined
+        <form onSubmit={handleClick}>
+            <lable>Enter Notes</lable>
+            <input type="text" value={notes} onChange={handleInput}></input>
+            <button className='style.button' type="submit">Testing API</button>
+        </form>
+
         {choices.map(choice => {
             console.log(choice);
             return(
                 <p key={choice.index}>{choice.message.content}</p>
             )
         })}
-        */}
+
 
     </div>
 
