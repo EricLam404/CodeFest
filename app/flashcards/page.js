@@ -55,7 +55,7 @@ return(
     <div className={styles.container}>
         
         {loading ? (
-            <div>Loading</div>
+            <div className={styles.loading}>Loading</div>
         ) : (
             !cardsGenerated ? (
                 <div className={styles.formContainer}>
