@@ -1,5 +1,6 @@
 
 .container, .cardContainer, .formContainer{
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,13 +8,14 @@
     gap:10px;
 }
 
+
 .formContainer{
     text-align: center;
     border: 1px solid rgb(233, 232, 232);
     border-radius: 15px;
+    box-shadow: 0 3px 8px rgb(224, 224, 224);
     margin: 0 auto;
     width: 1000px;
-    background-color: rgb(230, 230, 230);
     padding: 20px;
     
 }
@@ -30,8 +32,12 @@
     width: 150px;
 }
 
+.insufficient{
+    color: red;
+}
+
 .textarea{
-    width: 400px;
+    width: 500px;
     height: 200px;
     max-width: 1000px;
 }
