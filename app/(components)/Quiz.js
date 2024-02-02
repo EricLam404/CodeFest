@@ -29,6 +29,33 @@ const Quiz = ({ quiz }) => {
         });
     };
 
+    const handleClick = async (e) => {
+        const id = "1"
+        e.preventDefault();
+        
+        if(score){
+            quiz = {
+                ...quiz,
+                score
+            }
+        }
+        const res = await fetch(`/api/users/${id}/quiz`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                quiz: quiz
+            }),
+        })
+
+        if(!res.ok){
+            throw new Error("Failed to add quiz")
+        } else {
+            console.log("Add quiz")
+        }
+    }
+
     return (
     <div className={styles.quiz}>
         <div className={styles.quiz_title}>Quiz: {quiz.title}</div>
@@ -56,6 +83,7 @@ const Quiz = ({ quiz }) => {
             <button type="submit">Submit Quiz</button>
         </form>
         {score && <div className={styles.score}>{score} %</div>}
+        <button className={styles.btn} onClick={handleClick}>Save quiz to profile</button>
     </div>
     )
 }
