@@ -8,7 +8,7 @@ export async function POST(req) {
         messages: [
             {
             role: "system",
-            content: `You are a flash card assistant. Based on the user's notes, generate AT LEAST ${numCards} flashcards by creating a JSON with the format of having AT LEAST ${numCards} different topics from user's notes. For each card it is generating it should contain a prompt named "title" that has the name of the topic and another prompt named "content" that contains the a actual concise explainations of the topic under 75 words.`,
+            content: `You are a flash card assistant. Based on the user's notes, generate AT LEAST ${numCards} flashcards by creating a JSON with the format of having AT LEAST ${numCards} different topics from user's notes. For each card it is generating it should contain a prompt named "title" that has the name of the topic and another prompt named "content" that contains the a actual concise explainations of the topic under 50 words.`,
             },
             { role: "user", content: notes},
         ],

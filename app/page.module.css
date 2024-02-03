@@ -19,16 +19,16 @@
     align-items: center;
 }
 
-.container{
+.linkContainer{
     background-color: white;
     width: 150px;
     border: 1px solid;
     border-radius: 10px;
     text-align: center;
-    
 }
 
 .linkComponent{
+    margin-top: 10px;
     text-decoration: none;
 }
 

@@ -9,13 +9,13 @@ export default function Home() {
           <h1>CodeFest Project</h1>
         </div>
   
-        <div className={styles.container}>
+        <div className={styles.linkContainer}>
           <Link className={styles.linkComponent} href="/quiz">
               <div className={styles.link}>Go to Quiz</div>
           </Link>
         </div>
 
-        <div className={styles.container}>
+        <div className={styles.linkContainer}>
           <Link className={styles.linkComponent} href="/flashcards">
               <div className={styles.link}>Flashcards</div>
           </Link>
