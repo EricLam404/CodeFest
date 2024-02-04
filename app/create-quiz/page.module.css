@@ -84,3 +84,7 @@
 .swap input:not(:checked) ~ .swap_on {
     display: block;
 }
+
+.warning {
+    color: red;
+}

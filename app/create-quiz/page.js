@@ -12,6 +12,8 @@ const Page = () => {
     const [quiz, setQuiz] = useState({});
     const [numQuestions, setNumQuestions] = useState(1);
     const [notes, setNotes] = useState(true);
+    const [underWordCount, setUnderWordCount] = useState(false);
+    const [overWordCount, setOverWorkCount] = useState(false)
 
     useEffect(() => {
         if(!(Object.keys(quiz).length === 0)) setQuizGenerated(true);
@@ -20,8 +22,16 @@ const Page = () => {
         e.preventDefault();
 
         try {
-            setLoading(true);
-            if(wordCount > 100 && wordCount <= 15000){
+            if(wordCount < 100){
+                setOverWorkCount(false);
+                setUnderWordCount(true);
+            } else if( wordCount > 15000){
+                setUnderWordCount(false);
+                setOverWorkCount(true);
+            } else {
+                setLoading(true);
+                setUnderWordCount(false)
+                setOverWorkCount(false)
                 const notes = e.target.notes.value.trim()
                 const response = await fetch("/api/ai/quiz", {
                     method: "POST",
@@ -35,8 +45,6 @@ const Page = () => {
                 const quiz = JSON.parse(data.completion.choices[0].message.content)
                 console.log(quiz)
                 setQuiz(quiz)
-            } else {
-                console.log("Cannot create due to too little words or too many")
             }
         } catch(err){
             console.log(err);
@@ -94,6 +102,8 @@ const Page = () => {
                                 <label className={styles.notes} htmlFor="notes">Enter notes below(100-15,000 words)</label>
                                 <textarea name="notes" id="notes" onChange={handleChange}></textarea>
                                 <div className={styles.wordCount} >words: {wordCount}/15,000</div>
+                                {underWordCount && <div className={styles.warning}>Your notes are under the word count, please add more words</div>}
+                                {overWordCount && <div className={styles.warning}>Your notes are over the word count, please remove words</div>}
                             </div>
                             <div>
                                 <label htmlFor="numQuestions">Number of Questions:</label>
