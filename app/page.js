@@ -6,12 +6,14 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.startPageContainer}>
         <div className={styles.description}>
-          <h1>CodeFest Project</h1>
+          <h1>Brain Buddy</h1> 
+            <p className={styles.smallText}>Brain Buddy is an innovative AI-powered education platform that tailors personalized study plans, adaptive quizzes, and collaborative learning experiences, providing students with real-time progress tracking and motivational support for an engaging and effective learning journey</p>    
         </div>
+        {/* used to say: CodeFest Project */}
   
         <div className={styles.linkContainer}>
           <Link className={styles.linkComponent} href="/quiz">
-              <div className={styles.link}>Go to Quiz</div>
+              <div className={styles.link}>Quiz</div>
           </Link>
         </div>
 
@@ -21,8 +23,16 @@ export default function Home() {
           </Link>
         </div>
 
+        {/* LOGIN PAGE -- NOT WORKING */}
+        {/* <div className={styles.linkContainer}>
+          <Link className={styles.linkComponent} href="/src">
+              <div className={styles.link}>Login</div>
+          </Link>
+        </div> */}
+
       </div>
       
     </main>
   )
 }
+

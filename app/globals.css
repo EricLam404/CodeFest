@@ -11,7 +11,13 @@ body{
     justify-content: center;
 }
 
-html{
+/* html{
     background: linear-gradient(#e66465, #9198e5);
+} */
+
+html {
+  background: #add8e6; /* Light Blue color */
 }
+
+
 
