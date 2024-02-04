@@ -5,19 +5,36 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 5px;
+}
+
+.notesAndCardNums{
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputnumcards{
+    max-width: 50px;
+}
+
+.cardsNbutton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cardContainer{
     min-width: 500px;
-    max-width: 1000px;
+    max-width: 1200px;
+    margin: 50px;
     display: flex;
     flex-wrap: wrap;
     gap: 50px
 }
 
 .loading{
+    margin: 0 auto;
     text-align: center;
     border-radius: 10px;
     background-color: white;
@@ -47,22 +64,26 @@
     gap: 20px;
 }
 
-.button{
-    font-size: medium;
-    width: 150px;
+.frontButtons{
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button, .linkContainer{
+    width: 130px;
     border: 1px solid black;
-    border-radius: 10px;
-    height:25px;
+    height: 25px;
     background-color: white;
 }
 
-.linkContainer{
-    margin-top: 15px;
-    background-color: white;
-    width: 150px;
-    border: 1px solid;
-    border-radius: 10px;
-    text-align: center;
+.button{
+    font-size: large;
+    margin-bottom: 30px;
+}
+
+.resetButton{
+    margin-top: 60px;
 }
 
 .linkComponent{
@@ -91,25 +112,46 @@
     max-height: 1000px;
 }
 
+
 .cards{
-    box-shadow: 0 6px 12px rgb(65, 51, 51);
-    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgb(55, 80, 109);
     background-color: white;
     text-align: center;
     justify-content: center;
+    align-items: center;
     max-width: 320px;
     min-width: 320px;
     height: 300px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 20px;
-    user-select: none;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+    transition: 0.4s;
+}
+
+.flip{
+    --rotate-y: 180deg;
+}
+
+.front, .back{
+    padding: 3em;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.back{
+    display: inline-block;
+    text-align: left;
+    line-height: 1.4;
+    transform: rotateY(180deg);
 }
 
 .cards:hover{
-    user-select: auto;
-    transition-duration: 0.4s;
-    transform: scale(1.1);
+    --translate-y: -20px;
+    box-shadow: 0 8px 16px rgb(63, 122, 211);
 }
+
