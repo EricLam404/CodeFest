@@ -26,7 +26,8 @@ Brain Buddy is an innovative AI-powered education platform that tailors personal
 https://brain-buddy.vercel.app/
 
 ## Demo
-Paste the notes from notes.txt into the textarea in order to generate a quiz. Here are some sample notes abouy Biology to try out:
+Paste the notes from notes.txt into the textarea in order to generate a quiz. Or paste these sample notes about Biology:
+
 Cell Theory:
 All living organisms are composed of cells.
 The cell is the basic unit of life.
