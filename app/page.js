@@ -1,4 +1,3 @@
-import { useSearchParams } from 'next/navigation';
 import styles from './page.module.css'
 import Link from 'next/link';
 import DisplaySaved from './(components)/DisplaySaved';
@@ -16,14 +15,14 @@ export default function Home() {
         {/* used to say: CodeFest Project */}
   
         <div className={styles.linkContainer}>
-          <Link className={styles.linkComponent} href="/quiz">
-              <div className={styles.link}>Quiz</div>
+          <Link className={styles.linkComponent} href="/create-quiz">
+              <div className={styles.link}>Create a Quiz!</div>
           </Link>
         </div>
 
         <div className={styles.linkContainer}>
           <Link className={styles.linkComponent} href="/flashcards">
-              <div className={styles.link}>Flashcards</div>
+              <div className={styles.link}>Create Flashcards!</div>
           </Link>
         </div>
 
