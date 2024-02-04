@@ -11,9 +11,9 @@ body{
     justify-content: center;
 }
 
-html{
+/* html{
     background: linear-gradient(#e66465, #9198e5);
-}
+} */
 
 .logo{
   color:black;  
@@ -80,6 +80,7 @@ nav{
   justify-content: center;
   align-items: center;
 }
+
 @media screen and (min-width: 768px) {
   .nav__menu-bar{
     display: none;
@@ -105,5 +106,9 @@ nav{
   
   .nav__link:hover:before{
    width: 100%;
+  }
+
+  html {
+    background: #add8e6; /* Light Blue color */
   }
 }

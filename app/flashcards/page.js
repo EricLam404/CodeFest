@@ -11,7 +11,7 @@ const [warning, setWarning] = useState("");
 const [cardsGenerated, setCardGenerated] = useState(false);
 const [cardsData, setCards] = useState({});
 const [notes, setNotes] = useState("")
-const [numCard, setNumCard] = useState(4);
+const [numCard, setNumCard] = useState(3);
 const [wordCounts, updateCounts] = useState(0);
 const [titleOrInfo, updateCardStatus] = useState({});// True is to show info, False is to show Title
 
@@ -27,11 +27,25 @@ const handleCard = (index) => {
 
 };
 
+const resetNotes = () => {
+    setNotes("");
+    updateCounts(0);
+    setWarning("");
+}
+
+const reset = () => {
+    setWarning("");
+    setCards({});
+    setNumCard(3);
+    setCardGenerated(false);
+    updateCardStatus({});
+}
+
 const handleClick = async (e) => {
     e.preventDefault();
 
     if(wordCounts < 100){
-        setWarning("Insufficient word counts, please enter at least 100 words or else there may not be enough information for the API to generate cards");
+        setWarning("Please enter at least 100 words or else there may not be enough information to generate cards");
     }else{
         try{
             setLoading(true);
@@ -62,48 +76,60 @@ useEffect(() =>{
     } }, [cardsData])
 
 return(
-    <div className={styles.container}>
-        
-        {loading ? (
-            <div className={styles.loading}>Loading</div>
-        ) : (
-            !cardsGenerated ? (
-                <div className={styles.formContainer}>
-                <h2>Turning your notes into bunch of flashcards</h2>
-                <form className={styles.form} onSubmit={handleClick}>
-                <label>Enter Notes:</label>
-                <textarea className={styles.textarea} value={notes} onChange={handleInput}/>
-                <div className={styles.wordCounts}>Word Counts: {wordCounts}</div>
-                <div className={styles.insufficient}>{warning}</div>
-                <button className={styles.button} type="submit">Submit Notes</button>
-                </form>
-
-                <div className={styles.linkContainer}>
-                    <Link className={styles.linkComponent} href="/..">
-                        <div className={styles.link}>Main Page</div>
-                    </Link>
-                </div>
-                
-            </div>
-        ) : (
-                <div className={styles.cardContainer}>
-                    {cardsData.flashcards.map((cards, index) => (
-                        <div key={index} className={styles.cards} onClick={() => handleCard(index)}>
-                            {titleOrInfo[index] ? (
-                                <p>{cards.content}</p>
-                            ):(
-                                <h2>{cards.title}</h2>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            )
+        <div className={styles.container}>
             
-        )
-        }
+            {loading ? (
+                <div className={styles.loading}>Loading</div>
+            ) : (
+                !cardsGenerated ? (
+                    <div className={styles.formContainer}>
+                    <h2>Turning your notes into bunch of flashcards</h2>
+                    <form className={styles.form} onSubmit={handleClick}>
 
+                    <div className={styles.notesAndCardNums}>
+                        <label>Enter Notes:</label>
+                        <div className={styles.numCards}>
+                            <label># of Cards:</label>
+                            <input className={styles.inputnumcards}id="numofCards" onChange={(e) => {setNumCard(e.target.value)}} type="number" value={numCard} min={numCard} max="15"/>
+                        </div>
+                    </div>
 
-    </div>
+                    <textarea className={styles.textarea} value={notes} onChange={handleInput}/>
+                    <div className={styles.wordCounts}>Word Counts: {wordCounts}</div>
+                    <div className={styles.insufficient}>{warning}</div>
+
+                    <div className={styles.frontButtons}>
+                        <div className={styles.linkContainer}>
+                            <Link className={styles.linkComponent} href="/..">
+                                <div className={styles.link}>Back</div>
+                            </Link>
+                        </div>
+                        <button className={styles.button} type="submit">Submit</button>
+                        <button className={styles.button} type="button" onClick={resetNotes}>Clear</button>
+                    </div>
+                    </form>
+                
+                    
+                </div>
+            ) : (
+                    <div className={styles.cardsNbutton}>
+                        <div className={styles.cardContainer}>
+                            {cardsData.flashcards.map((cards, index) => (
+                                <div key={index} className={`${styles.cards} ${titleOrInfo[index] ? styles.flip : ''}`} onClick={() => handleCard(index)}>
+                                    <div className={styles.front}><h1>{cards.title}</h1></div>
+                                    <div className={styles.back}><p>{cards.content}</p></div> 
+                                </div>
+                            ))}
+                        </div>
+                        <div className={styles.resetButton}><button className={`${styles.button} ${styles.reset}`} type="reset" onClick={reset}>Reset</button></div>
+                    </div>
+                    
+                )
+                
+                )
+            }
+            
+        </div>
 
 )
 
