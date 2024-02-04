@@ -10,7 +10,7 @@ const Page = () => {
         const fetchData = async () => {
             try {
                 const id = "1"
-                const response = await fetch(`/api/users/${id}`, {
+                const response = await fetch(`/api/users/${id}/quiz`, {
                     method: "GET"
                 });
 
