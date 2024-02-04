@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import styles from './Quiz.module.css'
+import { useRouter, useSearchParams} from 'next/navigation';
+import { createQueryString } from './functions/CreateQueryString';
 
 const Quiz = ({ quiz }) => {
     const [userAnswers, setUserAnswers] = useState({});
     const [score, setScore] = useState(null);
+    const router = useRouter();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,29 +33,33 @@ const Quiz = ({ quiz }) => {
     };
 
     const handleClick = async (e) => {
-        const id = "1"
-        e.preventDefault();
-        
-        if(score){
-            quiz = {
-                ...quiz,
-                score
-            }
-        }
-        const res = await fetch(`/api/users/${id}/quiz`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                quiz: quiz
-            }),
-        })
+        try{
+            const id = "1"
+            e.preventDefault();
 
-        if(!res.ok){
-            throw new Error("Failed to add quiz")
-        } else {
-            console.log("Add quiz")
+            if(score){
+                quiz = {
+                    ...quiz,
+                    score
+                }
+            }
+            const res = await fetch(`/api/users/${id}/quiz`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    quiz: quiz
+                }),
+            })
+
+            if(!res.ok){
+                throw new Error("Failed to add quiz")
+            } 
+            router.refresh()
+            router.push("/" + '?' + createQueryString('quiz', 'added'))
+        } catch (error) {
+            console.log(error)
         }
     }
 

@@ -1,9 +1,13 @@
+import { useSearchParams } from 'next/navigation';
 import styles from './page.module.css'
 import Link from 'next/link';
+import DisplaySaved from './(components)/DisplaySaved';
 
 export default function Home() {
+
   return (
     <main className={styles.main}>
+      <DisplaySaved />
       <div className={styles.startPageContainer}>
         <div className={styles.description}>
           <h1>Brain Buddy</h1> 
