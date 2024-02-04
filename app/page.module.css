@@ -56,15 +56,20 @@
 
   /* In your CSS module or styles file */
 
-.main {
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
+    .main{
+        height: 100%;
+        margin: 0;
+    }
+
+    .centerBox{
+        height: 80vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
   .startPageContainer {
     gap: 15px;
     max-width: 500px;
