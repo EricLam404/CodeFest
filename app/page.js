@@ -28,7 +28,7 @@ export default function Home() {
           </div>
 
           <div className={styles.linkContainer}>
-            <Link className={styles.linkComponent} href="/flashcards">
+            <Link className={styles.linkComponent} href="/flashcards/savedCards">
                 <div className={styles.link}>Flashcards</div>
             </Link>
           </div>

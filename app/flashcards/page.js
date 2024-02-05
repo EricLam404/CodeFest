@@ -3,9 +3,12 @@
 import Link from 'next/link';
 import styles from './page.module.css'
 import {useState, useEffect} from "react";
+import { createQueryString } from '../(components)/functions/CreateQueryString';
+import { useRouter, useSearchParams} from 'next/navigation';
 
 const Flashcards = () => {
-
+    
+const router = useRouter();
 const [loading, setLoading] = useState(false);
 const [warning, setWarning] = useState("");
 const [cardsGenerated, setCardGenerated] = useState(false);
@@ -58,9 +61,10 @@ const handleClick = async (e) => {
                 }),
             });
             const result = await response.json();
-            const cards = JSON.parse(result.completion.choices[0].message.content)
-            console.log(cards)//Printing out to see if the API returns in the right format
-            setCards(cards);
+            console.log(result.completion.choices[0].message.content);
+            const cardsResp = JSON.parse(result.completion.choices[0].message.content)
+            console.log(cardsResp)//Printing out to see if the API returns in the right format
+            setCards(cardsResp);
 
         }catch(err){
             console.log(err);
@@ -69,6 +73,34 @@ const handleClick = async (e) => {
         }
     }
 }
+
+const handleSave = async (e) => {
+    try{
+        console.log(cardsData);
+        const id = "1"
+        e.preventDefault();
+
+        const resp = await fetch(`/api/users/${id}/flashcard`,{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                cards: cardsData.flashcards
+            }),
+        })
+
+
+        if(!resp.ok){
+            throw new Error("Failed to add cards")
+        }
+        router.refresh()
+        router.push("/" + '?' + createQueryString('cards', 'added'))
+    } catch (error){
+        console.log(error);
+    }
+}
+
 
 useEffect(() =>{
     if(!(Object.keys(cardsData).length === 0)){
@@ -83,7 +115,7 @@ return(
             ) : (
                 !cardsGenerated ? (
                     <div className={styles.formContainer}>
-                    <h2>Turning your notes into bunch of flashcards</h2>
+                    <h2>Turning Notes into Flashcards</h2>
                     <form className={styles.form} onSubmit={handleClick}>
 
                     <div className={styles.notesAndCardNums}>
@@ -122,6 +154,7 @@ return(
                             ))}
                         </div>
                         <div className={styles.resetButton}><button className={`${styles.button} ${styles.reset}`} type="reset" onClick={reset}>Reset</button></div>
+                        <div className={styles.saveButton}><button className={`${styles.button} ${styles.save}`} type="button" onClick={handleSave}>Save</button></div>
                     </div>
                     
                 )

@@ -1,7 +1,16 @@
 import mongoose, { Schema } from "mongoose";
 
 const flashcardSchema = new Schema({
-    
+
+    title:{
+        type: String,
+        required: true,
+    },
+
+    content:{
+        type: String,
+        required: true,
+    },        
 });
 
 
