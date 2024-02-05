@@ -2,8 +2,12 @@ import styles from './page.module.css'
 import Link from 'next/link';
 import Navbar from './(components)/Navbar';
 import DisplaySaved from './(components)/DisplaySaved';
+import React, { Suspense } from 'react'
 
 export default function Home() {
+  function DisplaySavedFallback() {
+    return <></>
+  }
 
   return (
     <main className={styles.main}>
@@ -29,8 +33,10 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      
-        <DisplaySaved />
+
+        <Suspense fallback={<DisplaySavedFallback />}>
+          <DisplaySaved />
+        </Suspense>
         <div className={styles.startPageContainer}>
           <div className={styles.description}>
             <h1>Brain Buddy</h1> 
