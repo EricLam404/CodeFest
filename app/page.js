@@ -16,30 +16,10 @@ export default function Home() {
       </div>
 
       <div className={styles.centerBox}>
+
         <div className={styles.startPageContainer}>
           <div className={styles.description}>
-            <h1>CodeFest Project</h1>
-          </div>
-    
-          <div className={styles.linkContainer}>
-            <Link className={styles.linkComponent} href="/quiz">
-                <div className={styles.link}>Go to Quiz</div>
-            </Link>
-          </div>
-
-          <div className={styles.linkContainer}>
-            <Link className={styles.linkComponent} href="/flashcards/savedCards">
-                <div className={styles.link}>Flashcards</div>
-            </Link>
-          </div>
-        </div>
-
-        <Suspense fallback={<DisplaySavedFallback />}>
-          <DisplaySaved />
-        </Suspense>
-        <div className={styles.startPageContainer}>
-          <div className={styles.description}>
-            <h1>Brain Buddy</h1> 
+            <h1>Brain Buddy - Codefest 2024</h1> 
               <p className={styles.smallText}>Brain Buddy is an innovative AI-powered education platform that tailors personalized study plans, adaptive quizzes, and collaborative learning experiences, providing students with real-time progress tracking and motivational support for an engaging and effective learning journey</p>    
           </div>
           {/* used to say: CodeFest Project */}
@@ -63,6 +43,28 @@ export default function Home() {
             </Link>
           </div> */}
         </div>
+
+        <div className={styles.pageContainer1}>
+          {/*<div className={styles.description}>
+            <h1>CodeFest Project</h1>
+            </div>*/}
+    
+          <div className={styles.linkContainer1}>
+            <Link className={styles.linkComponent} href="/quiz">
+                <div className={styles.link}>Quizzes</div>
+            </Link>
+          </div>
+
+          <div className={styles.linkContainer1}>
+            <Link className={styles.linkComponent} href="/flashcards/savedCards">
+                <div className={styles.link}>Saved Flashcards</div>
+            </Link>
+          </div>
+        </div>
+
+        <Suspense fallback={<DisplaySavedFallback />}>
+          <DisplaySaved />
+        </Suspense>
       </div>
     </main>
   )
