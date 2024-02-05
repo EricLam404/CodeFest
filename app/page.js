@@ -1,6 +1,5 @@
 import styles from './page.module.css'
 import Link from 'next/link';
-import Navbar from './(components)/Navbar';
 import DisplaySaved from './(components)/DisplaySaved';
 import React, { Suspense } from 'react'
 
@@ -11,10 +10,6 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <div>
-        <Navbar/>
-      </div>
-
       <div className={styles.centerBox}>
 
         <div className={styles.startPageContainer}>

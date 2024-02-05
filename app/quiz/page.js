@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from "./page.module.css"
-import Navbar from '../(components)/Navbar';
 import Link from 'next/link'
 
 const Page = () => {
@@ -28,9 +27,6 @@ const Page = () => {
     }, [])
     return (
         <div className={styles.main}>
-            <div>
-                <Navbar/>
-            </div>
             <div className={styles.quizzesPage}>
                 <h1>Quizzes</h1>
                 <div className={styles.quizList}>

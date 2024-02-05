@@ -5,8 +5,6 @@ import styles from './page.module.css'
 import {useState, useEffect} from "react";
 import { createQueryString } from '../(components)/functions/CreateQueryString';
 import { useRouter, useSearchParams} from 'next/navigation';
-import Navbar from '../(components)/Navbar';
-
 
 const Flashcards = () => {
     
@@ -111,9 +109,6 @@ useEffect(() =>{
 
 return(
         <div className={styles.body}>
-            <div>
-                <Navbar/>
-            </div>
             <div className={styles.container}>
                 {loading ? (
                     <div className={styles.loading}>Loading</div>
