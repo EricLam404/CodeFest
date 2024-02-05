@@ -1,0 +1,54 @@
+.cardsPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.cardsList{
+    width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    padding: 5px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgb(55, 80, 109);
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+    transition: 0.4s;
+    
+}
+
+.flip{
+    --rotate-y: 180deg;
+}
+
+.front, .back{
+    padding: 2em;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.back{
+    display: inline-block;
+    text-align: left;
+    line-height: 1.4;
+    transform: rotateY(180deg);
+}
+
+.card:hover{
+    --translate-y: -20px;
+    box-shadow: 0 8px 16px rgb(63, 122, 211);
+}
