@@ -42,3 +42,8 @@
     grid-template-columns: 1fr;
     }
 }
+
+.main{
+    height: 100%;
+    margin: 0;
+}

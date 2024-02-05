@@ -5,6 +5,8 @@ import styles from './page.module.css'
 import {useState, useEffect} from "react";
 import { createQueryString } from '../(components)/functions/CreateQueryString';
 import { useRouter, useSearchParams} from 'next/navigation';
+import Navbar from '../(components)/Navbar';
+
 
 const Flashcards = () => {
     
@@ -108,60 +110,63 @@ useEffect(() =>{
     } }, [cardsData])
 
 return(
-        <div className={styles.container}>
-            
-            {loading ? (
-                <div className={styles.loading}>Loading</div>
-            ) : (
-                !cardsGenerated ? (
-                    <div className={styles.formContainer}>
-                    <h2>Turning Notes into Flashcards</h2>
-                    <form className={styles.form} onSubmit={handleClick}>
+        <div className={styles.body}>
+            <div>
+                <Navbar/>
+            </div>
+            <div className={styles.container}>
+                {loading ? (
+                    <div className={styles.loading}>Loading</div>
+                ) : (
+                    !cardsGenerated ? (
+                        <div className={styles.formContainer}>
+                        <h2>Turning Notes into Flashcards</h2>
+                        <form className={styles.form} onSubmit={handleClick}>
 
-                    <div className={styles.notesAndCardNums}>
-                        <label>Enter Notes:</label>
-                        <div className={styles.numCards}>
-                            <label># of Cards:</label>
-                            <input className={styles.inputnumcards}id="numofCards" onChange={(e) => {setNumCard(e.target.value)}} type="number" value={numCard} min={numCard} max="15"/>
+                        <div className={styles.notesAndCardNums}>
+                            <label>Enter Notes:</label>
+                            <div className={styles.numCards}>
+                                <label># of Cards:</label>
+                                <input className={styles.inputnumcards}id="numofCards" onChange={(e) => {setNumCard(e.target.value)}} type="number" value={numCard} min={numCard} max="15"/>
+                            </div>
                         </div>
-                    </div>
 
-                    <textarea className={styles.textarea} value={notes} onChange={handleInput}/>
-                    <div className={styles.wordCounts}>Word Counts: {wordCounts}</div>
-                    <div className={styles.insufficient}>{warning}</div>
+                        <textarea className={styles.textarea} value={notes} onChange={handleInput}/>
+                        <div className={styles.wordCounts}>Word Counts: {wordCounts}</div>
+                        <div className={styles.insufficient}>{warning}</div>
 
-                    <div className={styles.frontButtons}>
-                        <div className={styles.linkContainer}>
-                            <Link className={styles.linkComponent} href="/..">
-                                <div className={styles.link}>Back</div>
-                            </Link>
+                        <div className={styles.frontButtons}>
+                            <div className={styles.linkContainer}>
+                                <Link className={styles.linkComponent} href="/..">
+                                    <div className={styles.link}>Back</div>
+                                </Link>
+                            </div>
+                            <button className={styles.button} type="submit">Submit</button>
+                            <button className={styles.button} type="button" onClick={resetNotes}>Clear</button>
                         </div>
-                        <button className={styles.button} type="submit">Submit</button>
-                        <button className={styles.button} type="button" onClick={resetNotes}>Clear</button>
-                    </div>
-                    </form>
-                
+                        </form>
                     
-                </div>
-            ) : (
-                    <div className={styles.cardsNbutton}>
-                        <div className={styles.cardContainer}>
-                            {cardsData.flashcards.map((cards, index) => (
-                                <div key={index} className={`${styles.cards} ${titleOrInfo[index] ? styles.flip : ''}`} onClick={() => handleCard(index)}>
-                                    <div className={styles.front}><h1>{cards.title}</h1></div>
-                                    <div className={styles.back}><p>{cards.content}</p></div> 
-                                </div>
-                            ))}
-                        </div>
-                        <div className={styles.resetButton}><button className={`${styles.button} ${styles.reset}`} type="reset" onClick={reset}>Reset</button></div>
-                        <div className={styles.saveButton}><button className={`${styles.button} ${styles.save}`} type="button" onClick={handleSave}>Save</button></div>
+                        
                     </div>
+                ) : (
+                        <div className={styles.cardsNbutton}>
+                            <div className={styles.cardContainer}>
+                                {cardsData.flashcards.map((cards, index) => (
+                                    <div key={index} className={`${styles.cards} ${titleOrInfo[index] ? styles.flip : ''}`} onClick={() => handleCard(index)}>
+                                        <div className={styles.front}><h1>{cards.title}</h1></div>
+                                        <div className={styles.back}><p>{cards.content}</p></div> 
+                                    </div>
+                                ))}
+                            </div>
+                            <div className={styles.resetButton}><button className={`${styles.button} ${styles.reset}`} type="reset" onClick={reset}>Reset</button></div>
+                            <div className={styles.saveButton}><button className={`${styles.button} ${styles.save}`} type="button" onClick={handleSave}>Save</button></div>
+                        </div>
+                        
+                    )
                     
-                )
-                
-                )
-            }
-            
+                    )
+                }
+            </div>
         </div>
 
 )

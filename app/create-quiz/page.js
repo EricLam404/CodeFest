@@ -3,6 +3,7 @@
 import styles from './page.module.css'
 import React, { useEffect, useState } from "react";
 import Quiz from "../(components)/Quiz"
+import Navbar from '../(components)/Navbar';
 // import { TestQuizData } from '/app/(components)/TestData/QuizData';
 
 const Page = () => {
@@ -83,64 +84,69 @@ const Page = () => {
     }
 
     return (
-        <div className={styles.body}>
-            <div className={styles.container}>
-            {loading ? (
-                <div className={styles.loading}>Loading...</div>
-            ) : !quizGenerated ? (
+        <div className={styles.mainBody}>
             <div>
-                <div className={styles.quizTitle}>Generate Quiz</div>
-                <label className={styles.swap}>
-                    <input type="checkbox" value={!notes} onChange={() => setNotes(!notes)} />
-                    <div className={styles.swap_on}>Generate quiz from notes</div>
-                    <div className={styles.swap_off}>Generate quiz from a subject</div>
-                </label>
-                {
-                    notes ? (
-                        <form className={styles.quizForm} onSubmit={handleQuizFromNotes}>
-                            <div className={styles.upload}>
-                                <label className={styles.notes} htmlFor="notes">Enter notes below(100-15,000 words)</label>
-                                <textarea name="notes" id="notes" onChange={handleChange}></textarea>
-                                <div className={styles.wordCount} >words: {wordCount}/15,000</div>
-                                {underWordCount && <div className={styles.warning}>Your notes are under the word count, please add more words</div>}
-                                {overWordCount && <div className={styles.warning}>Your notes are over the word count, please remove words</div>}
-                            </div>
-                            <div>
-                                <label htmlFor="numQuestions">Number of Questions:</label>
-                                <input
-                                type="number"
-                                id="numQuestions"
-                                className='numQuestions'
-                                value={numQuestions}
-                                onChange={(e) => { setNumQuestions(e.target.value)}}
-                                min={1}
-                                />
-                            </div>
-                            <button className={styles.btn} type="submit">Generate Quiz</button>
-                        </form>
-                    ) : (
-                        <form className={styles.quizForm} onSubmit={handleQuizFromSubject}>
-                            <div className={styles.upload}>
-                                <label className={styles.notes} htmlFor="subject">Enter subject(Ex: linked list) </label>
-                                <input name="subject" id="subject" />
-                            </div>
-                            <div>
-                                <label htmlFor="numQuestions">Number of Questions:</label>
-                                <input
-                                type="number"
-                                id="numQuestions"
-                                className='numQuestions'
-                                value={numQuestions}
-                                onChange={(e) => { setNumQuestions(e.target.value)}}
-                                min={1}
-                                />
-                            </div>
-                            <button className={styles.btn} type="submit">Generate Quiz</button>
-                        </form>
-                    )
-                }
+                <Navbar/>
             </div>
-            ) : <Quiz quiz={quiz}/>}
+            <div className={styles.body}>
+                <div className={styles.container}>
+                {loading ? (
+                    <div className={styles.loading}>Loading...</div>
+                ) : !quizGenerated ? (
+                <div>
+                    <div className={styles.quizTitle}>Generate Quiz</div>
+                    <label className={styles.swap}>
+                        <input type="checkbox" value={!notes} onChange={() => setNotes(!notes)} />
+                        <div className={styles.swap_on}>Generate quiz from notes</div>
+                        <div className={styles.swap_off}>Generate quiz from a subject</div>
+                    </label>
+                    {
+                        notes ? (
+                            <form className={styles.quizForm} onSubmit={handleQuizFromNotes}>
+                                <div className={styles.upload}>
+                                    <label className={styles.notes} htmlFor="notes">Enter notes below(100-15,000 words)</label>
+                                    <textarea name="notes" id="notes" onChange={handleChange}></textarea>
+                                    <div className={styles.wordCount} >words: {wordCount}/15,000</div>
+                                    {underWordCount && <div className={styles.warning}>Your notes are under the word count, please add more words</div>}
+                                    {overWordCount && <div className={styles.warning}>Your notes are over the word count, please remove words</div>}
+                                </div>
+                                <div>
+                                    <label htmlFor="numQuestions">Number of Questions:</label>
+                                    <input
+                                    type="number"
+                                    id="numQuestions"
+                                    className='numQuestions'
+                                    value={numQuestions}
+                                    onChange={(e) => { setNumQuestions(e.target.value)}}
+                                    min={1}
+                                    />
+                                </div>
+                                <button className={styles.btn} type="submit">Generate Quiz</button>
+                            </form>
+                        ) : (
+                            <form className={styles.quizForm} onSubmit={handleQuizFromSubject}>
+                                <div className={styles.upload}>
+                                    <label className={styles.notes} htmlFor="subject">Enter subject(Ex: linked list) </label>
+                                    <input name="subject" id="subject" />
+                                </div>
+                                <div>
+                                    <label htmlFor="numQuestions">Number of Questions:</label>
+                                    <input
+                                    type="number"
+                                    id="numQuestions"
+                                    className='numQuestions'
+                                    value={numQuestions}
+                                    onChange={(e) => { setNumQuestions(e.target.value)}}
+                                    min={1}
+                                    />
+                                </div>
+                                <button className={styles.btn} type="submit">Generate Quiz</button>
+                            </form>
+                        )
+                    }
+                </div>
+                ) : <Quiz quiz={quiz}/>}
+                </div>
             </div>
         </div>
     )

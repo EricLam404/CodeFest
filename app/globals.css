@@ -16,12 +16,13 @@ body{
 } */
 
 .logo{
-  color: #008CBA;  
-  font-size: 30px;
+  color: #00171e;  
+  font-size: 35px;
   font-style: italic;
   text-decoration: none;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family:'Courier New', Courier, monospace;
 }
+
 header{
   position: top;
   z-index: 30;
@@ -36,7 +37,6 @@ nav{
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  color: black;
 }
 .nav__menu-bar{
   display: flex;
@@ -71,6 +71,7 @@ nav{
   position: relative;
   transition: all 0.2s;
   color: black;
+  font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
 }
 

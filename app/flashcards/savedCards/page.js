@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./page.module.css"
 
+
 const SavedCards = () => {
     const [cards, setCards] = useState([]);
 

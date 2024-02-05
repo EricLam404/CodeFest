@@ -1,4 +1,8 @@
-
+.body{
+    height: 100%;
+    margin: 0;
+    padding-bottom: 20;
+}
 
 .container, .formContainer{
     font-family: Arial, sans-serif;
@@ -51,6 +55,7 @@
     border-radius: 15px;
     box-shadow: 0 3px 8px rgb(116, 116, 116);
     margin: 0 auto;
+    margin-top: 40px;
     width: 800px;
     padding: 20px;
     
