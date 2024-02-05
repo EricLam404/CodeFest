@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import User from "@/app/(models)/User";
 import { NextResponse } from "next/server";
 
@@ -36,8 +35,6 @@ export async function POST(req, { params }){
     }
 }
 
-=======
->>>>>>> d4f4563c4672401528d4c91c1380e256620cc099
 export async function GET(req, { params }){
     try{
         const { id } = params;
@@ -46,23 +43,14 @@ export async function GET(req, { params }){
 
         if (!user) {
             return NextResponse.json({
-<<<<<<< HEAD
                 flashcards: []
-=======
-                quizzes: []
->>>>>>> d4f4563c4672401528d4c91c1380e256620cc099
             }, { status: 201 })
         } else {
             
         }
-<<<<<<< HEAD
 
         return NextResponse.json({
             flashcards: user.flashcards
-=======
-        return NextResponse.json({
-            quizzes: user.quizzes
->>>>>>> d4f4563c4672401528d4c91c1380e256620cc099
         }, { status: 201 })
     } catch( error ) {
         console.log(error)
