@@ -5,13 +5,16 @@ import React, { useState, useEffect } from 'react'
 import styles from './DisplaySaved.module.css'
 
 const DisplaySaved = () => {
+    const [type, setType] = useState("");
     const [isVisible, setIsVisible] = useState(false);
     const searchParams = useSearchParams()
     const router = useRouter();
 
     useEffect(() => {
         const search = searchParams.get('quiz')
-        if(search === "added"){
+        const searchCards = searchParams.get('cards')
+        if(search === "added" || searchCards === "added"){
+            (search === "added" ? setType("Quiz") : setType("Cards")); 
             setIsVisible(true);
             router.replace("/")
         }
@@ -26,7 +29,7 @@ const DisplaySaved = () => {
     }, [isVisible]);
     return (
         <div className={`${styles.message} ${isVisible ? styles.visible : styles.hidden}`}>
-            Quiz has been added!
+            {type} has been added!
         </div>
     )
     }
