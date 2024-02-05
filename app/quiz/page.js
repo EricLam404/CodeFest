@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./page.module.css"
 import Navbar from '../(components)/Navbar';
+import Link from 'next/link'
 
 const Page = () => {
     const [quizzes, setQuizzes] = useState([]);
@@ -34,10 +35,22 @@ const Page = () => {
                 <h1>Quizzes</h1>
                 <div className={styles.quizList}>
                     {quizzes && quizzes.map((quiz, index) => (
-                    <div key={index} className={styles.quizItem}>
-                        <h3>{quiz.title}</h3>
-                        {quiz.score ? <p className={styles.quizTaken}>Grade:  {quiz.score}% </p> : <p className={styles.quizNotTaken}>Not taken</p>}
-                    </div>
+                    <Link
+                        key={index}
+                        href={{
+                            pathname: `/quiz/${quiz._id}`,
+                            query: {
+                                quiz: JSON.stringify(
+                                    quiz
+                                )
+                            },
+                        }}
+                    >
+                        <div key={index} className={styles.quizItem}>
+                            <h3>{quiz.title}</h3>
+                            {quiz.score !== -1 ? <p className={styles.quizTaken}>Grade:  {quiz.score}% </p> : <p className={styles.quizNotTaken}>Not taken</p>}
+                        </div>
+                    </Link>
                     ))}
                 </div>
             </div>

@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
-import styles from './Quiz.module.css'
-import { useRouter} from 'next/navigation';
-import { createQueryString } from './functions/CreateQueryString';
+'use client'
 
-const Quiz = ({ quiz }) => {
+import React, { useState } from 'react'
+import styles from './page.module.css'
+import { useRouter, useParams} from 'next/navigation';
+
+const Quiz = ({ searchParams }) => {
+    const quiz = JSON.parse(searchParams.quiz);
     const [userAnswers, setUserAnswers] = useState({});
-    const [score, setScore] = useState(-1);
+    const [score, setScore] = useState(null);
+    const [saved, setSaved] = useState(false);
+
     const router = useRouter();
+    const { quizId } = useParams();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,6 +28,30 @@ const Quiz = ({ quiz }) => {
 
         const calculatedScore = (correctAnswers / totalQuestions) * 100;
         setScore(calculatedScore.toFixed(2));
+
+        const id = "1"
+        console.log(calculatedScore.toFixed(2))
+
+        try {
+            const res = await fetch(`/api/users/${id}/quiz/${quizId}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    score: calculatedScore.toFixed(2)
+                }),
+            })
+            if(!res.ok){
+                throw new Error("Failed to update quiz")
+            } else {
+                setSaved(true);
+                router.refresh()
+                router.push("/quiz")
+            }
+        } catch(error) {
+            console.log(error);
+        }
     };
     
     const handleAnswer = async (e, questionIndex) => {
@@ -31,35 +60,6 @@ const Quiz = ({ quiz }) => {
           [questionIndex]: e.target.value,
         });
     };
-
-    const handleClick = async (e) => {
-        try{
-            const id = "1"
-            e.preventDefault();
-            
-
-            const res = await fetch(`/api/users/${id}/quiz`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    quiz: {
-                        ...quiz,
-                        score
-                    }
-                }),
-            })
-
-            if(!res.ok){
-                throw new Error("Failed to add quiz")
-            } 
-            router.refresh()
-            router.push("/" + '?' + createQueryString('quiz', 'added'))
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     return (
     <div className={styles.quiz}>
@@ -87,8 +87,8 @@ const Quiz = ({ quiz }) => {
             ))}
             <button type="submit">Submit Quiz</button>
         </form>
-        {score != -1 && <div className={styles.score}>{score} %</div>}
-        <button className={styles.btn} onClick={handleClick}>Save quiz to profile</button>
+        {score && <div className={styles.score}>{score} %</div>}
+        {saved && <div >Your score has been saved successfully</div>}
     </div>
     )
 }
