@@ -34,6 +34,7 @@
     margin: 50px;
     display: flex;
     flex-wrap: wrap;
+    justify-content:space-evenly;
     gap: 50px
 }
 

@@ -39,7 +39,6 @@ const resetNotes = () => {
 const reset = () => {
     setWarning("");
     setCards({});
-    setNumCard(3);
     setCardGenerated(false);
     updateCardStatus({});
 }
@@ -153,8 +152,10 @@ return(
                                     </div>
                                 ))}
                             </div>
-                            <div className={styles.resetButton}><button className={`${styles.button} ${styles.reset}`} type="reset" onClick={reset}>Reset</button></div>
-                            <div className={styles.saveButton}><button className={`${styles.button} ${styles.save}`} type="button" onClick={handleSave}>Save</button></div>
+                            <div className={styles.resultButtons}>
+                                <div className={styles.resetButton}><button className={`${styles.button} ${styles.reset}`} type="reset" onClick={reset}>Reset</button></div>
+                                <div className={styles.saveButton}><button className={`${styles.button} ${styles.save}`} type="button" onClick={handleSave}>Save</button></div>
+                            </div>
                         </div>
                         
                     )
