@@ -9,7 +9,7 @@ const MENU_LIST = [
   { text: "Home", href: "/" },
   { text: "Quiz", href: "/create-quiz" },
   { text: "Flashcards", href: "/flashcards" },
-  { text: "Login", href: "/" },
+  { text: "Login", href: "/login" },
 ];
 const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
