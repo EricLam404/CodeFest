@@ -1,79 +1,71 @@
- /* login.module.css */
- 
+/* page.module.css */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  .formContainer {
-    width: 300px;
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items horizontally */
-  }
-  
-  .label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-  }
-  
-  /* .button {
-    background-color: #66c0dd;
-    color: #fff;
-    padding: 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    width: 50%; 
-  } */
-  
-  /* .button {
-    background-color: #66c0dd;
-    color: #fff;
-    padding: 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    width: 50%;
-    margin: auto; 
-    display: block; 
-  } */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 
-  .button {
-    background-color: #66c0dd;
-    color: #fff;
-    padding: 10px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    width: 80%;
-    margin: auto;
-    display: block;
-    /* transition: background-color 0.3s ease; transition for the background color */
-  }
-  
-  .button:hover {
-    /* background-color: #4fa3c9; Darker blue on hover */
-    background-color: #e9e0fc;
-    color: black;
-  }
+.wholeBox {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .smallText {
-    font-size: smaller;
-    color: #555;
-    text-align: center; /* Center the small text */
-  }
+.header {
+  margin-bottom: 20px;
+}
+
+.smallText {
+  font-size: smaller;
+  color: #555;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formContainer {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #8ca5ad;
+  background-color: #d7f2fa;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.button {
+  background-color: #66c0dd;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  width: 80%;
+  margin: auto;
+  display: block;
+}
+
+.button:hover {
+  background-color: #e9e0fc;
+  color: black;
+}
+
+.button:active {
+  background-color: #6ebd77;
+}
