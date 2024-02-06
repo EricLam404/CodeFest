@@ -3,8 +3,11 @@
 import { useRouter } from 'next/navigation';
 import { createQueryString } from '../../(components)/functions/CreateQueryString';
 import React, { useState } from 'react';
+import { useUser , withPageAuthRequired } from "@auth0/nextjs-auth0/client";
+import Loading from '../../(components)/Loading';
+import ErrorMessage from '../../(components)/ErrorMessage';
 
-const SessionForm = () => {
+const Session = () => {
     const [sessionData, setSessionData] = useState({
         title: '',
         startTime: '',
@@ -13,6 +16,7 @@ const SessionForm = () => {
     const [warning, setWarning] = useState(false);
 
     const router = useRouter();
+    const { user } = useUser();
 
     const handleChange = (e) => {
         setSessionData({ ...sessionData, [e.target.name]: e.target.value });
@@ -23,7 +27,7 @@ const SessionForm = () => {
         if(sessionData.endTime <= sessionData.startTime){
             setWarning(true);
         } else {
-            const id = "1"
+            const id = user.sub
 
             const res = await fetch(`/api/users/${id}/session`, {
                 method: "POST",
@@ -63,4 +67,7 @@ const SessionForm = () => {
   );
 };
 
-export default SessionForm;
+export default withPageAuthRequired(Session, {
+  onRedirecting: () => <Loading />,
+  onError: (error) => <ErrorMessage>{error.message}</ErrorMessage>,
+});

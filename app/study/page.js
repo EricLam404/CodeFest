@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import Loading from "../(components)/Loading";
 
 const Page = () => {
     const [sessions, setSessions] = useState(null);
+    const { user, isLoading } = useUser()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,21 +29,28 @@ const Page = () => {
     return (
         <div>
             <h2>Your Study Sessions</h2>
-            <Link href={"/study/schedule"}>
-                <div>Add a study session</div>
-            </Link>
-            {sessions ? <ul>
-                {sessions.map((session) => (
-                <li key={session._id}>
-                    {session.title}: {new Date(session.startTime).toLocaleString()} -{' '}
-                    {new Date(session.endTime).toLocaleString()}
-                </li>
-                ))}
-            </ul>: 
-            <div>
-                You have no study sessions, please add one
-            </div>
-            }
+            {   
+                isLoading ? <Loading /> :
+                user ? 
+                <div>
+                    <Link href={"/study/schedule"}>
+                        <div>Add a study session</div>
+                    </Link>
+                    {sessions ? <ul>
+                        {sessions.map((session) => (
+                        <li key={session._id}>
+                            {session.title}: {new Date(session.startTime).toLocaleString()} -{' '}
+                            {new Date(session.endTime).toLocaleString()}
+                        </li>
+                        ))}
+                    </ul>: 
+                    <div>
+                        You have no study sessions, please add one
+                    </div>
+                    }
+                </div> :
+                <div>Log in to create study sessions</div>
+                }
         </div>
     );
 };
