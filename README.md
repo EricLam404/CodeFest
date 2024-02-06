@@ -65,7 +65,7 @@ Run ```npm run dev``` to run the website
 
 ## Next steps / ideas
 [ ] Allow user to schedule study sessions to find optimal learning times  
-[ ] Friends list to add buddies 
+[ ] Friends list to add buddies  
 [ ] Add pear learning where multiple students can share their schedules and find a time to study together  
 [ ] Send reminders to study and/or motivational messages through email  
 [ ] AI creates quizzes that adapt in difficulty based on the student’s performance  
