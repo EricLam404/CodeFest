@@ -62,3 +62,14 @@ Create a file and name it .env.local file
 Paste in the enviroment keys from the google doc  
 Run ```npm install``` to install all the latest packages  
 Run ```npm run dev``` to run the website
+
+## Next steps / ideas
+[ ] Allow user to schedule study sessions to find optimal learning times  
+[ ] Friends list to add buddies 
+[ ] Add pear learning where multiple students can share their schedules and find a time to study together  
+[ ] Send reminders to study and/or motivational messages through email  
+[ ] AI creates quizzes that adapt in difficulty based on the student’s performance  
+[ ] Use AI to analyze a student's strengths and weaknesses based on quiz / flashcard performance and create a customized study plan based on that  
+[ ] A dashboard to display such info  
+[ ] Generate a report based on their learning habits, topics they studied and their performances on each of the topics  
+[ ] Allowing user to export such report as a pdf
