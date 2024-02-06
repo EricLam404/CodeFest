@@ -64,7 +64,8 @@ Run ```npm install``` to install all the latest packages
 Run ```npm run dev``` to run the website
 
 ## Next steps / ideas
-[ ] Allow user to schedule study sessions to find optimal learning times  
+[ ] Fix styling  
+[X] Allow user to schedule study sessions to find optimal learning times  
 [ ] Friends list to add buddies  
 [ ] Add pear learning where multiple students can share their schedules and find a time to study together  
 [ ] Send reminders to study and/or motivational messages through email  
