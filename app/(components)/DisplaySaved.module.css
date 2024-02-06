@@ -15,6 +15,7 @@
 
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     transform-origin: center top;
+    z-index: 9999;
 }
 
 .visible {

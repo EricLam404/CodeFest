@@ -5,18 +5,22 @@ import React, { useState, useEffect } from 'react'
 import styles from './DisplaySaved.module.css'
 
 const DisplaySaved = () => {
-    const [type, setType] = useState("");
+    const [type, setType] = useState(null);
+    const [message, setMessage] = useState("");
     const [isVisible, setIsVisible] = useState(false);
+
     const searchParams = useSearchParams()
     const router = useRouter();
+    const DATA_SAVED = ["quiz", "cards", "session"]
 
     useEffect(() => {
-        const search = searchParams.get('quiz')
-        const searchCards = searchParams.get('cards')
-        if(search === "added" || searchCards === "added"){
-            (search === "added" ? setType("Quiz") : setType("Cards")); 
-            setIsVisible(true);
-            router.replace("/")
+        for (const [key, value] of searchParams.entries()) {
+            if(DATA_SAVED.includes(key)){
+                setType(key)
+                setMessage(value)
+                setIsVisible(true);
+                router.replace("/")
+            }
         }
     }, [])
     
@@ -28,8 +32,8 @@ const DisplaySaved = () => {
         return () => clearTimeout(timer);
     }, [isVisible]);
     return (
-        <div className={`${styles.message} ${isVisible ? styles.visible : styles.hidden}`}>
-            {type} has been added!
+        type && <div className={`${styles.message} ${isVisible ? styles.visible : styles.hidden}`}>
+            {type[0].toUpperCase() + type.substring(1)} has been {message}!
         </div>
     )
     }
