@@ -122,7 +122,7 @@ return(
                             <label>Enter Notes:</label>
                             <div className={styles.numCards}>
                                 <label># of Cards:</label>
-                                <input className={styles.inputnumcards} id="numofCards" onChange={(e) => {setNumCard(e.target.value)}} type="number" value={numCard} min="3" max="15"/>
+                                <input className={styles.inputnumcards} id="numofCards" onChange={(e) => {setNumCard(e.target.value)}} type="number" value={numCard} min="1" max="15"/>
                             </div>
                         </div>
 
