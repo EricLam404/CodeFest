@@ -57,6 +57,7 @@ const LoginPage = () => {
               Create Account
             </button>
           </form>
+          <a href="/api/auth/login">Login</a>
         </div>
       </div>
     </div>
