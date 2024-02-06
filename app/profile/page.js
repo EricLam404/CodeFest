@@ -7,6 +7,7 @@ export default function ProfileClient() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
+  console.log(user)
 
   return (
     user && (
@@ -14,6 +15,7 @@ export default function ProfileClient() {
         <img src={user.picture} alt={user.name} />
         <h2>{user.name}</h2>
         <p>{user.email}</p>
+        <a href="/api/auth/logout">Logout</a>
       </div>
     )
   );
