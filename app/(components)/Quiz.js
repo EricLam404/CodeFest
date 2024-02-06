@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import styles from './Quiz.module.css'
 import { useRouter} from 'next/navigation';
 import { createQueryString } from './functions/CreateQueryString';
+import { useUser } from "@auth0/nextjs-auth0/client"; 
 
 const Quiz = ({ quiz }) => {
     const [userAnswers, setUserAnswers] = useState({});
     const [score, setScore] = useState(-1);
     const router = useRouter();
+    const { user } = useUser();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,7 +36,7 @@ const Quiz = ({ quiz }) => {
 
     const handleClick = async (e) => {
         try{
-            const id = "1"
+            const id = user.sub
             e.preventDefault();
             
 
@@ -88,7 +90,8 @@ const Quiz = ({ quiz }) => {
             <button type="submit">Submit Quiz</button>
         </form>
         {score != -1 && <div className={styles.score}>{score} %</div>}
-        <button className={styles.btn} onClick={handleClick}>Save quiz to profile</button>
+        {user ? <button className={styles.btn} onClick={handleClick}>Save quiz to profile</button> 
+        : <div>Log in to save quiz</div>}
     </div>
     )
 }

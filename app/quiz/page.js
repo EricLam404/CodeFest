@@ -3,20 +3,23 @@
 import React, { useEffect, useState } from 'react'
 import styles from "./page.module.css"
 import Link from 'next/link'
+import { useUser , withPageAuthRequired } from "@auth0/nextjs-auth0/client";
+import Loading from '../(components)/Loading';
+import ErrorMessage from '../(components)/ErrorMessage';
 
 const Page = () => {
     const [quizzes, setQuizzes] = useState([]);
+    const { user } = useUser();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const id = "1"
+                const id = user.sub
                 const response = await fetch(`/api/users/${id}/quiz`, {
                     method: "GET"
                 });
 
                 const quizData = await response.json();
-                console.log(quizData.quizzes)
                 setQuizzes(quizData.quizzes)
             } catch (error) {
                 console.log(error);
@@ -30,7 +33,7 @@ const Page = () => {
             <div className={styles.quizzesPage}>
                 <h1>Quizzes</h1>
                 <div className={styles.quizList}>
-                    {quizzes && quizzes.map((quiz, index) => (
+                    {quizzes.length != 0 ? quizzes.map((quiz, index) => (
                     <Link
                         key={index}
                         href={{
@@ -47,7 +50,9 @@ const Page = () => {
                             {quiz.score !== -1 ? <p className={styles.quizTaken}>Grade:  {quiz.score}% </p> : <p className={styles.quizNotTaken}>Not taken</p>}
                         </div>
                     </Link>
-                    ))}
+                    )):
+                    <div>No saved quizzes </div>
+                    }
                 </div>
             </div>
             
@@ -55,4 +60,7 @@ const Page = () => {
     )
 }
 
-export default Page
+export default withPageAuthRequired(Page, {
+    onRedirecting: () => <Loading />,
+    onError: (error) => <ErrorMessage>{error.message}</ErrorMessage>,
+});

@@ -3,6 +3,9 @@
 import React, { useState } from 'react'
 import styles from './page.module.css'
 import { useRouter, useParams} from 'next/navigation';
+import { useUser , withPageAuthRequired } from "@auth0/nextjs-auth0/client";
+import Loading from '../../(components)/Loading';
+import ErrorMessage from '../../(components)/ErrorMessage';
 
 const Quiz = ({ searchParams }) => {
     const quiz = JSON.parse(searchParams.quiz);
@@ -12,6 +15,7 @@ const Quiz = ({ searchParams }) => {
 
     const router = useRouter();
     const { quizId } = useParams();
+    const { user } = useUser();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,10 +33,8 @@ const Quiz = ({ searchParams }) => {
         const calculatedScore = (correctAnswers / totalQuestions) * 100;
         setScore(calculatedScore.toFixed(2));
 
-        const id = "1"
-        console.log(calculatedScore.toFixed(2))
-
         try {
+            const id = user.sub
             const res = await fetch(`/api/users/${id}/quiz/${quizId}`, {
                 method: "POST",
                 headers: {
@@ -93,4 +95,7 @@ const Quiz = ({ searchParams }) => {
     )
 }
 
-export default Quiz
+export default withPageAuthRequired(Quiz, {
+    onRedirecting: () => <Loading />,
+    onError: (error) => <ErrorMessage>{error.message}</ErrorMessage>,
+});
