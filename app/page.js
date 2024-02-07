@@ -31,29 +31,35 @@ export default function Home() {
             </Link>
           </div>
 
+          <div className={styles.linkContainer}>
+            <Link className={styles.linkComponent} href="/study/schedule">
+                <div className={styles.link}>Create a study session!</div>
+            </Link>
+          </div>
+
           {/* LOGIN PAGE -- NOT WORKING */}
           {/* <div className={styles.linkContainer}>
             <Link className={styles.linkComponent} href="/src">
                 <div className={styles.link}>Login</div>
             </Link>
           </div> */}
-        </div>
+          <div className={styles.savedContainer}>
+            <div className={styles.savedLinkContainer}>
+              <Link className={styles.linkComponent} href="/quiz">
+                  <div className={styles.link}>Quizzes</div>
+              </Link>
+            </div>
 
-        <div className={styles.pageContainer1}>
-          {/*<div className={styles.description}>
-            <h1>CodeFest Project</h1>
-            </div>*/}
-    
-          <div className={styles.linkContainer1}>
-            <Link className={styles.linkComponent} href="/quiz">
-                <div className={styles.link}>Quizzes</div>
-            </Link>
-          </div>
-
-          <div className={styles.linkContainer1}>
-            <Link className={styles.linkComponent} href="/flashcards/savedCards">
-                <div className={styles.link}>Saved Flashcards</div>
-            </Link>
+            <div className={styles.savedLinkContainer}>
+              <Link className={styles.linkComponent} href="/flashcards/savedCards">
+                  <div className={styles.link}>Flashcards</div>
+              </Link>
+            </div>
+            <div className={styles.savedLinkContainer}>
+              <Link className={styles.linkComponent} href="/study">
+                  <div className={styles.link}>Study Sessions</div>
+              </Link>
+            </div>
           </div>
         </div>
 

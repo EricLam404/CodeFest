@@ -71,3 +71,10 @@
     color: white;
     background-color: black;
 }
+
+.notLogin {
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: large;
+    padding-left: 2px;
+}

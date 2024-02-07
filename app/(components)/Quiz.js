@@ -91,7 +91,7 @@ const Quiz = ({ quiz }) => {
         </form>
         {score != -1 && <div className={styles.score}>{score} %</div>}
         {user ? <button className={styles.btn} onClick={handleClick}>Save quiz to profile</button> 
-        : <div>Log in to save quiz</div>}
+        : <div className={styles.notLogin}>Log in to save quiz</div>}
     </div>
     )
 }

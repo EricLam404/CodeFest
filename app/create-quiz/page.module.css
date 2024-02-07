@@ -2,14 +2,14 @@
     height: 100%;
     margin: 0%;
 }
+
 .body {
     height: 80vh;
     margin: 0;
     font-family: 'Arial', sans-serif;
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
+    justify-content: center;
 }
 
 .container {
@@ -21,9 +21,15 @@
     width: 100%;
 }
 
-.loading {
+.loading{
+    margin: 0 auto;
     text-align: center;
-    font-size: 18px;
+    border-radius: 10px;
+    background-color: white;
+    width:200px;
+    padding: 5px;
+    box-shadow: 0 2px 6px rgb(116, 116, 116);
+    user-select: none;
 }
 
 .upload {
@@ -54,6 +60,22 @@
 .question {
     margin-bottom: 20px;
 }
+
+.quizTitle {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.quizForm {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.textarea {
+    min-height: 300px;
+}
+
 
 .swap {
     display: flex;

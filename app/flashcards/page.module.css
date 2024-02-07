@@ -90,6 +90,7 @@
 
 .resetButton{
     margin-top: 60px;
+    border-radius: 8px;
 }
 
 .linkComponent{
@@ -159,5 +160,18 @@
 .cards:hover{
     --translate-y: -20px;
     box-shadow: 0 8px 16px rgb(63, 122, 211);
+}
+
+.notLogin {
+    background-color: white;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.resultButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 

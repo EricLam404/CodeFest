@@ -2,13 +2,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  height: 100vh;
-}
-
-body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: #add8e6
 }
 
 /* html{
@@ -111,9 +107,5 @@ nav{
   
   .nav__link:hover:before{
    width: 100%;
-  }
-
-  html {
-    background: #add8e6; /* Light Blue color */
   }
 }

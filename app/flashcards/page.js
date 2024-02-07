@@ -4,7 +4,8 @@ import Link from 'next/link';
 import styles from './page.module.css'
 import {useState, useEffect} from "react";
 import { createQueryString } from '../(components)/functions/CreateQueryString';
-import { useRouter, useSearchParams} from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { useUser } from "@auth0/nextjs-auth0/client"; 
 
 const Flashcards = () => {
     
@@ -18,6 +19,7 @@ const [numCard, setNumCard] = useState(3);
 const [wordCounts, updateCounts] = useState(0);
 const [titleOrInfo, updateCardStatus] = useState({});// True is to show info, False is to show Title
 
+const { user } = useUser();
 const handleInput = (e) => {
     setNotes(e.target.value);
     updateCounts(e.target.value ? e.target.value.trim().split(" ").length : 0);
@@ -76,7 +78,7 @@ const handleClick = async (e) => {
 const handleSave = async (e) => {
     try{
         console.log(cardsData);
-        const id = "1"
+        const id = user.sub
         e.preventDefault();
 
         const resp = await fetch(`/api/users/${id}/flashcard`,{
@@ -154,7 +156,12 @@ return(
                             </div>
                             <div className={styles.resultButtons}>
                                 <div className={styles.resetButton}><button className={`${styles.button} ${styles.reset}`} type="reset" onClick={reset}>Reset</button></div>
-                                <div className={styles.saveButton}><button className={`${styles.button} ${styles.save}`} type="button" onClick={handleSave}>Save</button></div>
+                                {user ? 
+                                <div className={styles.saveButton}>
+                                    <button className={`${styles.button} ${styles.save}`} type="button" onClick={handleSave}>Save</button>
+                                </div> : 
+                                <div className={styles.notLogin}>Login to save flashcards</div>
+                                }
                             </div>
                         </div>
                         

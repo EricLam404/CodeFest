@@ -100,8 +100,8 @@ const Page = () => {
                         <form className={styles.quizForm} onSubmit={handleQuizFromNotes}>
                             <div className={styles.upload}>
                                 <label className={styles.notes} htmlFor="notes">Enter notes below(100-15,000 words)</label>
-                                <textarea name="notes" id="notes" onChange={handleChange}></textarea>
-                                <div className={styles.wordCount} >words: {wordCount}/15,000</div>
+                                <textarea className={styles.textarea} name="notes" id="notes" onChange={handleChange}></textarea>
+                                <div className={styles.wordCount} >Word count: {wordCount}/15,000</div>
                                 {underWordCount && <div className={styles.warning}>Your notes are under the word count, please add more words</div>}
                                 {overWordCount && <div className={styles.warning}>Your notes are over the word count, please remove words</div>}
                             </div>
