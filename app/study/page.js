@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import Loading from "../(components)/Loading";
-import styles from "./page.module.css"
+import styles from "./page.module.css";
+import { useUser , withPageAuthRequired } from "@auth0/nextjs-auth0/client";
+import ErrorMessage from '../(components)/ErrorMessage';
+
 
 const Page = () => {
     const [sessions, setSessions] = useState(null);
@@ -56,4 +58,7 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default withPageAuthRequired(Page, {
+    onRedirecting: () => <Loading />,
+    onError: (error) => <ErrorMessage>{error.message}</ErrorMessage>,
+  });
