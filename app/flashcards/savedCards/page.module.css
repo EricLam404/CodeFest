@@ -54,3 +54,14 @@
     --translate-y: -20px;
     box-shadow: 0 8px 16px rgb(63, 122, 211);
 }
+
+.link {
+    color: #3498db;
+    text-decoration: none;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

@@ -42,7 +42,7 @@ const SavedCards = () => {
     return (
         <div className={styles.cardsPage}>
             <h1>Cards</h1>
-            <Link href={"/flashcards"}>
+            <Link href={"/flashcards"} className={styles.link}>
                 <div>Add flashcards</div>
             </Link>
             <div className={styles.cardsList}>

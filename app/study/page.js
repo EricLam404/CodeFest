@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Loading from "../(components)/Loading";
+import styles from "./page.module.css"
 
 const Page = () => {
     const [sessions, setSessions] = useState(null);
@@ -33,7 +34,7 @@ const Page = () => {
                 isLoading ? <Loading /> :
                 user ? 
                 <div>
-                    <Link href={"/study/schedule"}>
+                    <Link href={"/study/schedule"} className={styles.link}>
                         <div>Add a study session</div>
                     </Link>
                     {sessions ? <ul>

@@ -1,0 +1,73 @@
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.logoutLink {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logoutLink:hover {
+    text-decoration: underline;
+}
+
+.link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.headerContainer {
+    text-align: center;
+}
+
+.username {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.profileList {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.profileList li {
+    background-color: #f8f8f8;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.userInfo {
+    color: #555;
+}
+
+.loading,
+.error {
+    text-align: center;
+    margin-top: 20px;
+    color: #ff5555;
+}
+
+.loading {
+    font-style: italic;
+    color: #3498db;
+}

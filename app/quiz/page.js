@@ -32,7 +32,7 @@ const Page = () => {
         <div className={styles.main}>
             <div className={styles.quizzesPage}>
                 <h1>Quizzes</h1>
-                <Link href={"/quiz"}>
+                <Link href={"/quiz"} className={styles.link}>
                     <div>Add a quiz</div>
                 </Link>
                 <div className={styles.quizList}>
