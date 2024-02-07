@@ -6,18 +6,23 @@ import Logo from "./Logo";
 import NavItem from "./NavItem";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-const MENU_LIST = [
-  { text: "Home", href: "/" },
-  { text: "Quizzes", href: "/quiz" },
-  { text: "Flashcards", href: "/flashcards/savedCards" },
-  { text: "Study Sessions", href: "/study" },
-  { text: "Login", href: "/login" },
-];
-
 const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
   const { user } = useUser(); 
+
+
+  let MENU_LIST = [
+    { text: "Home", href: "/" },
+    { text: "Quizzes", href: "/quiz" },
+    { text: "Flashcards", href: "/flashcards/savedCards" },
+    { text: "Study Sessions", href: "/study" },
+    { text: "Login", href: "/api/auth/login" },
+  ];
+  if(user){
+    MENU_LIST[4].text = "Profile";
+    MENU_LIST[4].href = "/profile";
+  }
   return (
     <header>
       <nav className={`nav`}>
