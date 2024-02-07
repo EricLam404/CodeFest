@@ -32,6 +32,9 @@ const Page = () => {
         <div className={styles.main}>
             <div className={styles.quizzesPage}>
                 <h1>Quizzes</h1>
+                <Link href={"/quiz"}>
+                    <div>Add a quiz</div>
+                </Link>
                 <div className={styles.quizList}>
                     {quizzes.length != 0 ? quizzes.map((quiz, index) => (
                     <Link

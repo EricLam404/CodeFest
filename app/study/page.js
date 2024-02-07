@@ -12,7 +12,7 @@ const Page = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const id = "1"
+                const id = user.sub
                 const response = await fetch(`/api/users/${id}/session`, {
                     method: "GET"
                 });

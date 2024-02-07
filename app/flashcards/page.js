@@ -5,7 +5,7 @@ import styles from './page.module.css'
 import {useState, useEffect} from "react";
 import { createQueryString } from '../(components)/functions/CreateQueryString';
 import { useRouter } from 'next/navigation';
-import { useUser } from "@auth0/nextjs-auth0/client"; 
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Flashcards = () => {
     

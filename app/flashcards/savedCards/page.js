@@ -5,7 +5,7 @@ import styles from "./page.module.css"
 import { useUser , withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import Loading from '../../(components)/Loading';
 import ErrorMessage from '../../(components)/ErrorMessage';
-
+import Link from 'next/link';
 
 const SavedCards = () => {
     const [cards, setCards] = useState([]);
@@ -42,6 +42,9 @@ const SavedCards = () => {
     return (
         <div className={styles.cardsPage}>
             <h1>Cards</h1>
+            <Link href={"/flashcards"}>
+                <div>Add flashcards</div>
+            </Link>
             <div className={styles.cardsList}>
                 {cards && cards.map((card, index) => (
                 <div key={index} className={`${styles.card} ${flip[index] ? styles.flip : ''}`} onClick={() => handleFlip(index)}>

@@ -4,17 +4,20 @@ import Image from "next/image";
 import React, { useState } from "react";
 import Logo from "./Logo";
 import NavItem from "./NavItem";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 const MENU_LIST = [
   { text: "Home", href: "/" },
-  { text: "Quiz", href: "/create-quiz" },
-  { text: "Flashcards", href: "/flashcards" },
+  { text: "Quizzes", href: "/quiz" },
+  { text: "Flashcards", href: "/flashcards/savedCards" },
+  { text: "Study Sessions", href: "/study" },
   { text: "Login", href: "/login" },
 ];
+
 const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
-
+  const { user } = useUser(); 
   return (
     <header>
       <nav className={`nav`}>
@@ -25,10 +28,6 @@ const Navbar = () => {
           onClick={() => setNavActive(!navActive)}
           className={`nav__menu-bar`}
         >
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
         </div>
         <div className={`${navActive ? "active" : ""} nav__menu-list`}>
           {MENU_LIST.map((menu, idx) => (
