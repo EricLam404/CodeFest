@@ -1,11 +1,13 @@
 'use client'
 
+import styles from './page.module.css'
 import { useRouter } from 'next/navigation';
 import { createQueryString } from '../../(components)/functions/CreateQueryString';
 import React, { useState } from 'react';
 import { useUser , withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import Loading from '../../(components)/Loading';
 import ErrorMessage from '../../(components)/ErrorMessage';
+
 
 const Session = () => {
     const [sessionData, setSessionData] = useState({
