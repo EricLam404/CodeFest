@@ -25,15 +25,15 @@ const Page = () => {
                 console.log(error);
             }
         };
-        if(!sessions) fetchData()
+        fetchData()
     }, [])
     return (
-        <div>
+        <div className={styles.study}>
             <h2>Your Study Sessions</h2>
             {   
                 isLoading ? <Loading /> :
                 user ? 
-                <div>
+                <div className={styles.container}>
                     <Link href={"/study/schedule"} className={styles.link}>
                         <div>Add a study session</div>
                     </Link>

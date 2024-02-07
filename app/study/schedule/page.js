@@ -50,7 +50,9 @@ const Session = () => {
     };  
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className={styles.container}>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <div className={styles.name}>Add a study session</div>
       <label>
         Title:
         <input type="text" name="title" value={sessionData.title} onChange={handleChange} />
@@ -66,6 +68,7 @@ const Session = () => {
       {warning && <div>End time cannot be before start time</div>}
       <button type="submit">Save Session</button>
     </form>
+    </div>
   );
 };
 
