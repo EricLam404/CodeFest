@@ -7,7 +7,7 @@ import ErrorMessage from '../(components)/ErrorMessage';
 
 const Profile = () => {
   const { user, error, isLoading } = useUser();
-  const [stats, setStats] = useState();
+  const [stats, setStats] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +38,7 @@ const Profile = () => {
         <h2>{user?.name}</h2>
         <ul>
           <li> Email: {user?.email}</li>
-          {stats && <>
+          {stats.length != 0 && <>
           <li>Total quizzes saved: {stats.totalQuizzes}</li>
           <li>Total quizzes taken: {stats.quizTaken}</li>
           <li>Quizzes mean: {stats.quizStats.mean || "N/A"}</li>
